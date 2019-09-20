@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Reflection;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ScalablePressAPI
@@ -31,7 +31,7 @@ namespace ScalablePressAPI
                 using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
                 {
                     var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var result = JsonSerializer.Deserialize<T>(responseContent);
+                    var result = JsonConvert.DeserializeObject<T>(responseContent);
                     return result;
                 }
             }

@@ -1,5 +1,9 @@
-﻿namespace ScalablePressAPI.Models
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ScalablePressAPI.Models
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Sizes
     {
         sml,
