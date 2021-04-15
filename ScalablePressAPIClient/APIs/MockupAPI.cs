@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Net.Http.Headers;
 
-namespace ScalablePressAPI.APIs
+namespace ScalablePress.API
 {
-    class MockupAPI
+    public class MockupAPI : APIBase
     {
+        internal MockupAPI(AuthenticationHeaderValue authHeader) : base(authHeader)
+        {
+        }
+
     }
 }

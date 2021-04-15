@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ScalablePressAPI.Models
+namespace ScalablePress.API.Models
 {
     public class CategoryProducts : Category
     {

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Net.Http.Headers;
 
-namespace ScalablePressAPI.APIs
+namespace ScalablePress.API
 {
-    class OrderAPI
+    public class OrderAPI : APIBase
     {
+        internal OrderAPI(AuthenticationHeaderValue authHeader) : base(authHeader)
+        {
+        }
+
     }
 }

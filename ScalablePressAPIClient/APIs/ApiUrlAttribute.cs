@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace ScalablePressAPI
+namespace ScalablePress.API
 {
     public class ApiCallAttribute : Attribute
     {

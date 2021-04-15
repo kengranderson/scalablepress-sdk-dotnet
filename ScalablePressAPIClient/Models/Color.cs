@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ScalablePressAPI.Models
+namespace ScalablePress.API.Models
 {
     public class Color
     {

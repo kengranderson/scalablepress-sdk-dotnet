@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Net.Http.Headers;
 
-namespace ScalablePressAPI.APIs
+namespace ScalablePress.API
 {
-    class BillingAPI
+    public class BillingAPI : APIBase
     {
+        internal BillingAPI(AuthenticationHeaderValue authHeader) : base(authHeader)
+        {
+        }
+
     }
 }

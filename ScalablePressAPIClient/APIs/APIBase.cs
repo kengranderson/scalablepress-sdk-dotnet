@@ -1,42 +1,148 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Wakanda.FormSerializer;
 
-namespace ScalablePressAPI
+namespace ScalablePress.API
 {
     public class APIBase
     {
-        HttpClient _httpClient;
-        internal Client apiClient;
+        const string apiBaseUrl = "https://api.scalablepress.com";
+        const string apiPath = "v2/";
 
-        internal APIBase(HttpClient httpClient)
+        static readonly JsonSerializerOptions _options = new JsonSerializerOptions
+        { 
+            Converters = {new JsonStringEnumConverter() }
+        };
+
+        static readonly HttpClient _httpClient = new HttpClient()
         {
-            _httpClient = httpClient;
+            BaseAddress = new Uri(apiBaseUrl)
+        };
+
+        readonly AuthenticationHeaderValue _authHeader;
+
+        protected APIBase(AuthenticationHeaderValue authHeader)
+        {
+            _authHeader = authHeader;
         }
 
-        protected async Task<T> CallAPIAsync<T>(Type callingType, string methodName, string parameterName = null, string parameterValue = null)
-        {
-            var parameters = parameterName == null ? new Type[] { } : new Type[] { typeof(string) };
-            var method = callingType.GetRuntimeMethod(methodName, parameters);
-            var attribute = method.GetCustomAttribute<ApiCallAttribute>();
-            var urlPattern = attribute.UrlPattern;
-            var url = BuildUrl(urlPattern, parameterName, parameterValue);
+        protected async Task<T> CallJsonAPIAsync<T>(Type callingType, string methodName) =>
+            await CallAPIAsync<T>(callingType, methodName).ConfigureAwait(false);
 
-            using (var request = new HttpRequestMessage(attribute.Method, apiClient.ApiPath + url))
+        //protected async Task<T> CallJsonAPIAsync<T>(Type callingType, string methodName, object postData) =>
+        //    await CallJsonAPIAsync<T>(callingType, methodName, null, null, postData).ConfigureAwait(false);
+
+        protected async Task<T> CallJsonAPIAsync<T>(Type callingType, string methodName, string urlParameterName = null, string urlParameterValue = null, object postData = null) =>
+            await CallAPIAsync<T>(callingType, methodName,
+                request =>
+                {
+                    if (postData != null)
+                    {
+                        var jsonData = JsonSerializer.Serialize(postData, _options);
+                        request.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                    }
+                }, urlParameterName, urlParameterValue, postData).ConfigureAwait(false);
+
+
+
+        protected async Task<T> CallMultipartAPIAsync<T>(Type callingType, string methodName, object postData) =>
+            await CallMultipartAPIAsync<T>(callingType, methodName, null, null, postData).ConfigureAwait(false);
+
+        protected async Task<T> CallMultipartAPIAsync<T>(Type callingType, string methodName, string urlParameterName = null, string urlParameterValue = null, object postData = null) =>
+            await CallAPIAsync<T>(callingType, methodName,
+                request =>
+                {
+                    if (postData != null)
+                    {
+                        var content = CreateMultipartFormDataContent(postData);
+                        request.Content = content;
+                    }
+                }, urlParameterName, urlParameterValue, postData).ConfigureAwait(false);
+
+        MultipartFormDataContent CreateMultipartFormDataContent(object postData)
+        {
+            var content = new MultipartFormDataContent();
+            var formFields = Serializer.Serialize(postData);
+
+            foreach (var key in formFields.Keys)
             {
-                request.Headers.Authorization = apiClient.AuthHeader;
+                content.Add(new StringContent(formFields[key]), key);
+            }
+
+            return content;
+        }
+
+        async Task<T> CallAPIAsync<T>(Type callingType, string methodName, Action<HttpRequestMessage> contentSetter = null, string urlParameterName = null, string urlParameterValue = null, object postData = null)
+        {
+            // Resolve the method signature.
+            var parameters = urlParameterName == null ? 
+                new Type[] { } :                        // method has no parameters
+                new Type[] { typeof(string) };          // method has single string parameter
+
+            // Get the method.
+            var method = callingType.GetRuntimeMethod(methodName, parameters);
+
+            // Get the custom attribute.
+            var attribute = method.GetCustomAttribute<ApiCallAttribute>();
+
+            // Get the url pattern.
+            var urlPattern = attribute.UrlPattern;
+
+            // Build the url.
+            var url = BuildUrl(urlPattern, urlParameterName, urlParameterValue);
+
+            using (var request = new HttpRequestMessage(attribute.Method, apiPath + url))
+            {
+                request.Headers.Authorization =_authHeader;
+
+                contentSetter?.Invoke(request);
 
                 using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var result = JsonConvert.DeserializeObject<T>(responseContent);
+                    var responseContent = await ReadAsStringAsync(response).ConfigureAwait(false);
+                    var result = JsonSerializer.Deserialize<T>(responseContent, _options);
                     return result;
                 }
             }
         }
 
+        static Regex rxUTF8 = new Regex("utf8|UTF-8", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        static async Task<string> ReadAsStringAsync(HttpResponseMessage response)
+        {
+            using (var content = response.Content)
+            {
+                var contentType = content.Headers.First(h => h.Key.Equals("Content-Type"));
+                var rawEncoding = contentType.Value.First();
+
+                if (rxUTF8.IsMatch(rawEncoding))
+                {
+                    var bytes = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                    return Encoding.UTF8.GetString(bytes);
+                }
+                else
+                {
+                    var html = await content.ReadAsStringAsync().ConfigureAwait(false);
+                    return html;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Builds a url from a pair of mustachioed key/value parameters in a string
+        /// </summary>
+        /// <param name="urlPattern"></param>
+        /// <param name="parameterName"></param>
+        /// <param name="parameterValue"></param>
+        /// <returns></returns>
         string BuildUrl(string urlPattern, string parameterName = null, string parameterValue = null)
         {
             if (parameterName != null)

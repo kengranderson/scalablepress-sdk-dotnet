@@ -1,4 +1,4 @@
-﻿namespace ScalablePressAPI.Models
+﻿namespace ScalablePress.API.Models
 {
     public class Category
     {

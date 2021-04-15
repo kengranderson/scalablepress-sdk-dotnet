@@ -9,9 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+		..\..\..\AppData\Roaming\Microsoft\UserSecrets\APIClientTestVault\secrets.json = ..\..\..\AppData\Roaming\Microsoft\UserSecrets\APIClientTestVault\secrets.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIClientTest", "APIClientTest\APIClientTest.csproj", "{5FFAD642-8C6A-45BC-90A6-81CB2328D0EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIClientTest", "APIClientTest\APIClientTest.csproj", "{5FFAD642-8C6A-45BC-90A6-81CB2328D0EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
