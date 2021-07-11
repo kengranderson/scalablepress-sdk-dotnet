@@ -7,13 +7,13 @@ namespace ScalablePress.API.Models.DesignApi
         /// <summary>
         /// file or URL	Artwork file or absolute URL for this side of the design. Artwork requirements
         /// </summary>
-        public string artwork { get; set; }
+        public byte[] artwork { get; set; }
 
         /// <summary>
         /// file or URL	Optional proof image file or absolute URL showing position of artwork on the product, 
         /// used by our artists to make sure the print dimensions and position are as intended
         /// </summary>
-        public string proof { get; set; }
+        public byte[] proof { get; set; }
 
         /// <summary>
         /// Aspect ratio
