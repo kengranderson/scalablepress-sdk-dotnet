@@ -1,5 +1,11 @@
-﻿using System;
+﻿#define USE_FIDDLER
+
+using Microsoft.Extensions.Logging;
+using ScalablePress.API.Models;
+using System;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -18,21 +24,44 @@ namespace ScalablePress.API
         const string apiPath = "v2/";
 
         static readonly JsonSerializerOptions _options = new JsonSerializerOptions
-        { 
-            Converters = {new JsonStringEnumConverter() }
+        {
+            Converters = { new JsonStringEnumConverter() }
         };
+
+#if USE_FIDDLER
+
+        static readonly HttpClientHandler clientHandler = new HttpClientHandler()
+        {
+            Proxy = new WebProxy
+            {
+                Address = new Uri("http://127.0.0.1:8888")
+            }
+        };
+
+        static readonly HttpClient _httpClient = new HttpClient(clientHandler)
+        {
+            BaseAddress = new Uri(apiBaseUrl)
+        };
+
+#else
 
         static readonly HttpClient _httpClient = new HttpClient()
         {
             BaseAddress = new Uri(apiBaseUrl)
         };
+#endif
 
         readonly AuthenticationHeaderValue _authHeader;
+        readonly ILogger _logger;
 
-        protected APIBase(AuthenticationHeaderValue authHeader)
+        protected APIBase(AuthenticationHeaderValue authHeader, ILogger logger)
         {
             _authHeader = authHeader;
+            _logger = logger;
         }
+
+        public bool ApiCallSuccess { get; private set; }
+        internal BadRequest BadRequest { get; private set; }
 
         protected async Task<T> CallJsonAPIAsync<T>(Type callingType, string methodName) =>
             await CallAPIAsync<T>(callingType, methodName).ConfigureAwait(false);
@@ -52,7 +81,6 @@ namespace ScalablePress.API
                 }, urlParameterName, urlParameterValue, postData).ConfigureAwait(false);
 
 
-
         protected async Task<T> CallMultipartAPIAsync<T>(Type callingType, string methodName, object postData) =>
             await CallMultipartAPIAsync<T>(callingType, methodName, null, null, postData).ConfigureAwait(false);
 
@@ -70,47 +98,83 @@ namespace ScalablePress.API
         MultipartFormDataContent CreateMultipartFormDataContent(object postData)
         {
             var content = new MultipartFormDataContent();
-            var formFields = Serializer.Serialize(postData);
+
+            var formFields = HtmlFormSerializer.Serialize(postData);
 
             foreach (var key in formFields.Keys)
             {
-                content.Add(new StringContent(formFields[key]), key);
+                var value = formFields[key];
+
+                if (value != null)
+                {
+                    if (value.GetType() == typeof(FileStream))
+                    {
+                        var fs = value as FileStream;
+                        var fileValue = new StreamContent(fs);
+                        content.Add(fileValue, key);
+                        // WARNING: fileValue.Headers.ContentDisposition is NULL before Add() is called!
+                        fileValue.Headers.ContentDisposition.FileName = $"\"{Path.GetFileName(fs.Name)}\"";
+                        // WARNING: Header sequence seems to matter!
+                        fileValue.Headers.ContentType = MediaTypeHeaderValue.Parse("application/octet-stream");
+                    }
+                    else
+                    {
+                        var field = new StringContent(value.ToString());
+                        field.Headers.Remove("Content-Type");
+                        content.Add(field, key.Contains("[") ? key : $"\"{key}\"");
+                    }
+                }
             }
 
             return content;
         }
 
-        async Task<T> CallAPIAsync<T>(Type callingType, string methodName, Action<HttpRequestMessage> contentSetter = null, string urlParameterName = null, string urlParameterValue = null, object postData = null)
+        async Task<T> CallAPIAsync<T>(Type callingType, string methodName, Action<HttpRequestMessage> contentSetter = null,
+            string urlParameterName = null, string urlParameterValue = null, object postData = null)
         {
-            // Resolve the method signature.
-            var parameters = urlParameterName == null ? 
-                new Type[] { } :                        // method has no parameters
-                new Type[] { typeof(string) };          // method has single string parameter
-
-            // Get the method.
-            var method = callingType.GetRuntimeMethod(methodName, parameters);
-
-            // Get the custom attribute.
-            var attribute = method.GetCustomAttribute<ApiCallAttribute>();
-
-            // Get the url pattern.
-            var urlPattern = attribute.UrlPattern;
-
-            // Build the url.
-            var url = BuildUrl(urlPattern, urlParameterName, urlParameterValue);
-
-            using (var request = new HttpRequestMessage(attribute.Method, apiPath + url))
+            try
             {
-                request.Headers.Authorization =_authHeader;
+                // Get the method.
+                var method = callingType.GetMethod(methodName);
 
-                contentSetter?.Invoke(request);
+                // Get the custom attribute.
+                var attribute = method.GetCustomAttribute<ApiCallAttribute>();
 
-                using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
+                // Get the url pattern.
+                var urlPattern = attribute.UrlPattern;
+
+                // Build the url.
+                var url = BuildUrl(urlPattern, urlParameterName, urlParameterValue);
+
+                ApiCallSuccess = false;
+
+                using (var request = new HttpRequestMessage(attribute.Method, apiPath + url))
                 {
-                    var responseContent = await ReadAsStringAsync(response).ConfigureAwait(false);
-                    var result = JsonSerializer.Deserialize<T>(responseContent, _options);
-                    return result;
+                    request.Headers.Authorization = _authHeader;
+                    contentSetter?.Invoke(request);
+
+                    using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
+                    {
+                        var responseContent = await ReadAsStringAsync(response).ConfigureAwait(false);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            ApiCallSuccess = true;
+                            var result = JsonSerializer.Deserialize<T>(responseContent, _options);
+                            return result;
+                        }
+                        else
+                        {
+                            BadRequest = GetBadRequest(responseContent);
+                            return default;
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return default;
             }
         }
 
@@ -150,6 +214,12 @@ namespace ScalablePress.API
                 urlPattern = urlPattern.Replace($"{{{parameterName}}}", parameterValue);
             }
             return urlPattern;
+        }
+
+        BadRequest GetBadRequest(string jsonResponse)
+        {
+            var result = JsonSerializer.Deserialize<BadRequest>(jsonResponse, _options);
+            return result;
         }
     }
 }

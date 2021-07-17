@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Wakanda.FormSerializer;
 
 namespace ScalablePress.API.Models.DesignApi
 {
@@ -7,12 +8,14 @@ namespace ScalablePress.API.Models.DesignApi
         /// <summary>
         /// file or URL	Artwork file or absolute URL for this side of the design. Artwork requirements
         /// </summary>
+        [SerializeAsFile]
         public string artwork { get; set; }
 
         /// <summary>
         /// file or URL	Optional proof image file or absolute URL showing position of artwork on the product, 
         /// used by our artists to make sure the print dimensions and position are as intended
         /// </summary>
+        [SerializeAsFile]
         public string proof { get; set; }
 
         /// <summary>
@@ -39,5 +42,20 @@ namespace ScalablePress.API.Models.DesignApi
         /// Screenprint/DTG only, position object
         /// </summary>
         public Position position { get; set; }
+
+        #region API response fields
+
+        /// <summary>
+        /// Artwork Id returned by API.
+        /// </summary>
+        [SerializeIgnore]
+        public string artworkId { get; set; }
+
+        /// <summary>
+        /// Design Approvals.
+        /// </summary>
+        public DesignApprovals approval { get; set; }
+
+        #endregion
     }
 }

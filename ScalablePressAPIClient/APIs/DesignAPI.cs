@@ -1,4 +1,5 @@
-﻿using ScalablePress.API.Models.DesignApi;
+﻿using Microsoft.Extensions.Logging;
+using ScalablePress.API.Models.DesignApi;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace ScalablePress.API
 {
     public class DesignAPI : APIBase
     {
-        internal DesignAPI(AuthenticationHeaderValue authHeader) : base(authHeader)
+        internal DesignAPI(AuthenticationHeaderValue authHeader, ILogger logger) : base(authHeader, logger)
         {
         }
 

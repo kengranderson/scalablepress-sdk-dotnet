@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>ScalablePress.API</AssemblyName>
     <RootNamespace>ScalablePress.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="5.0.2" />
-    <PackageReference Include="Wakanda.FormSerializer" Version="2021.4.15.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.0-preview.5.21301.5" />
+    <!--<PackageReference Include="Wakanda.FormSerializer" Version="2021.7.10.1" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Wakanda.FormSerializer\Wakanda.FormSerializer\Wakanda.FormSerializer.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,11 @@
-﻿using System.Net.Http.Headers;
+﻿using Microsoft.Extensions.Logging;
+using System.Net.Http.Headers;
 
 namespace ScalablePress.API
 {
     public class CustomizationAPI : APIBase
     {
-        internal CustomizationAPI(AuthenticationHeaderValue authHeader) : base(authHeader)
+        internal CustomizationAPI(AuthenticationHeaderValue authHeader, ILogger logger) : base(authHeader, logger)
         {
         }
 

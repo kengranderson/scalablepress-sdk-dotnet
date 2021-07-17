@@ -36,5 +36,13 @@ namespace ScalablePress.API.Models.DesignApi
         /// test or live
         /// </summary>
         public string mode { get; set; }
+
+        public string source { get; set; }
+
+        public string name { get; set; }
+        
+        public bool conversion { get; set; }
+        
+        public bool review { get; set; }
     }
 }

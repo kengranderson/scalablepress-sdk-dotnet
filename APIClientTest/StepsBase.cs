@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using NLog;
 using ScalablePress.API;
+using Wakanda.Logging;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace APIClientTest
 {
@@ -18,12 +21,14 @@ namespace APIClientTest
         /// </summary>
         public StepsBase()
         {
+            ILogger logger = new LoggerAdapter(LogManager.GetCurrentClassLogger());
+
             var builder = new ConfigurationBuilder().
                 AddUserSecrets("APIClientTestVault");
 
             config = builder.Build();
             var apiKey = config["ScalablePressAPI:TestAPIKey"];
-            apiClient = new Client(apiKey);
+            apiClient = new Client(apiKey, logger);
         }
     }
 }
