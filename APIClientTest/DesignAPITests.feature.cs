@@ -124,10 +124,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "11",
                             "C",
                             "2.5",
-                            "C:\\Users\\Ken.CMUCORP\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\aka\\bfm-design-" +
-                                "aka-founders.png",
-                            "C:\\Users\\Ken.CMUCORP\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\aka\\bfm-design-" +
-                                "aka-founders-proof.png"});
+                            "C:\\Users\\Ken\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\blackfacts-minute-video" +
+                                "-cover.png",
+                            "C:\\Users\\Ken\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\black-facts-matter-shir" +
+                                "t-aka-founders-proof.png"});
 #line 7
  testRunner.Given("the table of data", ((string)(null)), table1, "Given ");
 #line hidden
@@ -136,6 +136,52 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 11
  testRunner.Then("the result should be a new Design Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Create Design, Get Quote, Place Order")]
+        [Xunit.TraitAttribute("FeatureTitle", "DesignAPITests")]
+        [Xunit.TraitAttribute("Description", "Create Design, Get Quote, Place Order")]
+        [Xunit.TraitAttribute("Category", "create-to-order")]
+        public virtual void CreateDesignGetQuotePlaceOrder()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "create-to-order"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Design, Get Quote, Place Order", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 15
+testRunner.Given("design is created from a random image in the images folder", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 16
+testRunner.And("a Quote is generated from the Design Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 17
+testRunner.When("an Order is placed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
+testRunner.Then("we should have an Order Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -1,7 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#define USE_FIDDLER
+
+using Microsoft.Extensions.Logging;
 using ScalablePress.API.Models;
 using System;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -24,10 +28,28 @@ namespace ScalablePress.API
             Converters = { new JsonStringEnumConverter() }
         };
 
+#if USE_FIDDLER
+
+        static readonly HttpClientHandler clientHandler = new HttpClientHandler()
+        {
+            Proxy = new WebProxy
+            {
+                Address = new Uri("http://127.0.0.1:8888")
+            }
+        };
+
+        static readonly HttpClient _httpClient = new HttpClient(clientHandler)
+        {
+            BaseAddress = new Uri(apiBaseUrl)
+        };
+
+#else
+
         static readonly HttpClient _httpClient = new HttpClient()
         {
             BaseAddress = new Uri(apiBaseUrl)
         };
+#endif
 
         readonly AuthenticationHeaderValue _authHeader;
         readonly ILogger _logger;
@@ -76,17 +98,38 @@ namespace ScalablePress.API
         MultipartFormDataContent CreateMultipartFormDataContent(object postData)
         {
             var content = new MultipartFormDataContent();
-            var formFields = Serializer.Serialize(postData);
+
+            var formFields = HtmlFormSerializer.Serialize(postData);
 
             foreach (var key in formFields.Keys)
             {
-                content.Add(new StringContent(formFields[key]), key);
+                var value = formFields[key];
+
+                if (value != null)
+                {
+                    if (value.GetType() == typeof(FileStream))
+                    {
+                        var fs = value as FileStream;
+                        var fileValue = new StreamContent(fs);
+                        content.Add(fileValue, key);
+                        // WARNING: fileValue.Headers.ContentDisposition is NULL before Add() is called!
+                        fileValue.Headers.ContentDisposition.FileName = $"\"{Path.GetFileName(fs.Name)}\"";
+                        // WARNING: Header sequence seems to matter!
+                        fileValue.Headers.ContentType = MediaTypeHeaderValue.Parse("application/octet-stream");
+                    }
+                    else
+                    {
+                        var field = new StringContent(value.ToString());
+                        field.Headers.Remove("Content-Type");
+                        content.Add(field, key.Contains("[") ? key : $"\"{key}\"");
+                    }
+                }
             }
 
             return content;
         }
 
-        async Task<T> CallAPIAsync<T>(Type callingType, string methodName, Action<HttpRequestMessage> contentSetter = null, 
+        async Task<T> CallAPIAsync<T>(Type callingType, string methodName, Action<HttpRequestMessage> contentSetter = null,
             string urlParameterName = null, string urlParameterValue = null, object postData = null)
         {
             try
