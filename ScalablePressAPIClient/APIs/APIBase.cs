@@ -1,6 +1,7 @@
 ﻿#define USE_FIDDLER
 
 using Microsoft.Extensions.Logging;
+using ScalablePress.API.Converters;
 using ScalablePress.API.Models;
 using System;
 using System.IO;
@@ -21,11 +22,15 @@ namespace ScalablePress.API
     public class APIBase
     {
         const string apiBaseUrl = "https://api.scalablepress.com";
-        const string apiPath = "v2/";
 
         static readonly JsonSerializerOptions _options = new JsonSerializerOptions
         {
-            Converters = { new JsonStringEnumConverter() }
+            Converters =
+            {
+                new EnumValueAttributeConverter(),
+                new JsonStringEnumConverter()
+            },
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
 #if USE_FIDDLER
@@ -75,16 +80,22 @@ namespace ScalablePress.API
                 {
                     if (postData != null)
                     {
-                        var jsonData = JsonSerializer.Serialize(postData, _options);
-                        request.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                        if (postData.GetType() == typeof(string))
+                        {
+                            request.Content = new StringContent(postData.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded");
+                        }
+                        else
+                        {
+                            var jsonData = JsonSerializer.Serialize(postData, _options);
+                            request.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                        }
                     }
-                }, urlParameterName, urlParameterValue, postData).ConfigureAwait(false);
-
+                }, urlParameterName, urlParameterValue).ConfigureAwait(false);
 
         protected async Task<T> CallMultipartAPIAsync<T>(Type callingType, string methodName, object postData) =>
             await CallMultipartAPIAsync<T>(callingType, methodName, null, null, postData).ConfigureAwait(false);
 
-        protected async Task<T> CallMultipartAPIAsync<T>(Type callingType, string methodName, string urlParameterName = null, string urlParameterValue = null, object postData = null) =>
+        async Task<T> CallMultipartAPIAsync<T>(Type callingType, string methodName, string urlParameterName = null, string urlParameterValue = null, object postData = null) =>
             await CallAPIAsync<T>(callingType, methodName,
                 request =>
                 {
@@ -93,7 +104,7 @@ namespace ScalablePress.API
                         var content = CreateMultipartFormDataContent(postData);
                         request.Content = content;
                     }
-                }, urlParameterName, urlParameterValue, postData).ConfigureAwait(false);
+                }, urlParameterName, urlParameterValue).ConfigureAwait(false);
 
         MultipartFormDataContent CreateMultipartFormDataContent(object postData)
         {
@@ -130,7 +141,7 @@ namespace ScalablePress.API
         }
 
         async Task<T> CallAPIAsync<T>(Type callingType, string methodName, Action<HttpRequestMessage> contentSetter = null,
-            string urlParameterName = null, string urlParameterValue = null, object postData = null)
+            string urlParameterName = null, string urlParameterValue = null)
         {
             try
             {
@@ -140,15 +151,21 @@ namespace ScalablePress.API
                 // Get the custom attribute.
                 var attribute = method.GetCustomAttribute<ApiCallAttribute>();
 
+                // Get the Http method.
+                var httpMethod = attribute.GetHttpMethod(method);
+
                 // Get the url pattern.
                 var urlPattern = attribute.UrlPattern;
+
+                // And the API version.
+                var apiVersion = attribute.ApiVersion;
 
                 // Build the url.
                 var url = BuildUrl(urlPattern, urlParameterName, urlParameterValue);
 
                 ApiCallSuccess = false;
 
-                using (var request = new HttpRequestMessage(attribute.Method, apiPath + url))
+                using (var request = new HttpRequestMessage(httpMethod, apiVersion + "/" + url))
                 {
                     request.Headers.Authorization = _authHeader;
                     contentSetter?.Invoke(request);

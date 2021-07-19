@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ScalablePress.API.Models.OrderApi.OrderEventMetaData">
+    <Position X="3" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAACA=</HashCode>
+      <FileName>Models\OrderApi\OrderEventMetaData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.OrderApi.OrderEvent">
+    <Position X="3" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAIAAAAAAAgAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrderApi\OrderEvent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="meta" />
+      <Property Name="name" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.OrderApi.Order">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAACQQQAAAIACAAIgAAAAAAAAAAAIAAEAAABAAAQA=</HashCode>
+      <FileName>Models\OrderApi\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.OrderApi.OrderItem">
+    <Position X="3" Y="0.5" Width="3.25" />
+    <AssociationLine Name="status" Type="ScalablePress.API.Models.OrderApi.OrderEventTypes" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.781" Y="2.95" />
+        <Point X="5.781" Y="3.75" />
+        <Point X="6.75" Y="3.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAEAAAAABAAAAAIFAAAAAAAABAAAACA=</HashCode>
+      <FileName>Models\OrderApi\OrderItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="status" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="ScalablePress.API.Models.OrderApi.OrderEventTypes">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIIABCAAgAAAIIACAAAAAAAEAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\OrderApi\OrderEventTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ScalablePress.API.Models.OrderApi.ItemEventTypes">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAACAAA=</HashCode>
+      <FileName>Models\OrderApi\ItemEventTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

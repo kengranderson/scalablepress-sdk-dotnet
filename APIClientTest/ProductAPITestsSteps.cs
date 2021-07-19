@@ -21,9 +21,9 @@ namespace APIClientTest
         }
 
         [When(@"I call the Product Categories API")]
-        public void WhenICallTheProductCategoriesAPI()
+        public async Task WhenICallTheProductCategoriesAPI()
         {
-            categories = Task.Run(async () => await apiClient.ProductAPI.GetCategoriesAsync().ConfigureAwait(false)).Result;
+            categories = await apiClient.ProductAPI.ListProductCategoriesAsync().ConfigureAwait(false);
         }
 
         [Then(@"the result should be a list of Categories")]
@@ -34,9 +34,9 @@ namespace APIClientTest
         }
 
         [When(@"I call the Product Category API for Category Id ""(.*)""")]
-        public void WhenICallTheProductCategoryAPIForCategoryId(string categoryId)
+        public async Task WhenICallTheProductCategoryAPIForCategoryId(string categoryId)
         {
-            categoryProducts = Task.Run(async () => await apiClient.ProductAPI.GetProductsAsync(categoryId).ConfigureAwait(false)).Result;
+            categoryProducts = await apiClient.ProductAPI.ListProductsAsync(categoryId).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a list of Products")]
@@ -47,9 +47,9 @@ namespace APIClientTest
         }
 
         [When(@"I call the Product Info API for Product Id ""(.*)""")]
-        public void WhenICallTheProductInfoAPIForProductId(string productId)
+        public async Task WhenICallTheProductInfoAPIForProductId(string productId)
         {
-            productInfo = Task.Run(async () => await apiClient.ProductAPI.GetProductInfoAsync(productId).ConfigureAwait(false)).Result;
+            productInfo = await apiClient.ProductAPI.ListProductInformationAsync(productId).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a Product Info object")]
@@ -59,9 +59,9 @@ namespace APIClientTest
         }
 
         [When(@"I call the Product Availability API for Product Id ""(.*)""")]
-        public void WhenICallTheProductAvailabilityAPIForProductId(string productId)
+        public async Task WhenICallTheProductAvailabilityAPIForProductId(string productId)
         {
-            productAvailability = Task.Run(async () => await apiClient.ProductAPI.GetProductAvailabilityAsync(productId).ConfigureAwait(false)).Result;
+            productAvailability = await apiClient.ProductAPI.ListProductAvailabilityAsync(productId).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a Product Avalability object")]
@@ -71,9 +71,9 @@ namespace APIClientTest
         }
 
         [When(@"I call the Product Details API for Product Id ""(.*)""")]
-        public void WhenICallTheProductDetailsAPIForProductId(string productId)
+        public async Task WhenICallTheProductDetailsAPIForProductId(string productId)
         {
-            productDetails = Task.Run(async () => await apiClient.ProductAPI.GetProductDetailsAsync(productId).ConfigureAwait(false)).Result;
+            productDetails = await apiClient.ProductAPI.ListDetailedItemInformationAsync(productId).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a Product Details object")]

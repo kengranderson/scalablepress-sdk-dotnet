@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ScalablePress.API.Models.MockupApi.Mockup">
+    <Position X="2.5" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAABAAAgAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MockupApi\Mockup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="output" />
+      <Property Name="product" />
+      <Property Name="template" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.MockupApi.Template">
+    <Position X="6.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\MockupApi\Template.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="background" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.MockupApi.MockupProduct">
+    <Position X="6.25" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\MockupApi\MockupProduct.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="id" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.MockupApi.MockupOutput">
+    <Position X="6.25" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAQAAACAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\MockupApi\MockupOutput.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="format" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="ScalablePress.API.Models.MockupApi.AvailableProducts">
+    <Position X="10.25" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\MockupApi\AvailableProducts.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ScalablePress.API.Models.MockupApi.AvailableBackgrounds">
+    <Position X="10.25" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAABAAAAAAAAAAAAQCEQAAAAAAAAAAAAAQgAA=</HashCode>
+      <FileName>Models\MockupApi\AvailableBackgrounds.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ScalablePress.API.Models.MockupApi.MockupOutputFormats">
+    <Position X="10.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\MockupApi\MockupOutputFormats.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

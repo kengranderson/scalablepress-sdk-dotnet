@@ -10,7 +10,7 @@ namespace ScalablePress.API.Models.DesignApi
         /// <summary>
         /// the type of product this design is for. screenprint, dtg, case, mug, or poster
         /// </summary>
-        public string type { get; set; }
+        public PrintingTypes type { get; set; }
 
         /// <summary>
         /// Time when design was created
@@ -35,7 +35,7 @@ namespace ScalablePress.API.Models.DesignApi
         /// <summary>
         /// test or live
         /// </summary>
-        public string mode { get; set; }
+        public ApiModes mode { get; set; }
 
         public string source { get; set; }
 
