@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NLog;
 using ScalablePress.API;
+using ScalablePress.API.Models.DesignApi;
+using System;
+using System.IO;
 using Wakanda.Logging;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
@@ -29,6 +32,36 @@ namespace APIClientTest
             config = builder.Build();
             var apiKey = config["ScalablePressAPI:TestAPIKey"];
             apiClient = new Client(apiKey, logger);
+        }
+
+        protected DesignRequest CreateDesignFromRandomImageAsync()
+        {
+            var rand = new Random();
+            var files = Directory.GetFiles("C:\\BFU\\350years\\pngs", "*.png");
+            var randomImageFileName = files[rand.Next(files.Length)];
+
+            var design = new DesignRequest
+            {
+                name = $"Design created on {DateTime.Now}",
+                type = DesignTypes.dtg,
+                sides = new DesignSides
+                {
+                    front = new DesignSide
+                    {
+                        artwork = randomImageFileName,
+                        aspect = 1,
+                        resize = true,
+                        dimensions = Dimension.Width(11),
+                        position = new Position
+                        {
+                            horizontal = "C",
+                            offset = PositionOffset.FromTop(2.5f)
+                        }
+                    }
+                }
+            };
+
+            return design;
         }
     }
 }

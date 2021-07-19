@@ -1,6 +1,6 @@
 ﻿namespace ScalablePress.API.Models.DesignApi
 {
-    public class Design
+    public class DesignRequest
     {
         /// <summary>
         /// Optional reference name for design

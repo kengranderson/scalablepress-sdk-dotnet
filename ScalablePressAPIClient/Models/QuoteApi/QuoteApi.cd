@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteSides">
+    <Position X="3" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteSides.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteResponse">
+    <Position X="0.5" Y="6" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACQQQAAAAACAAIAAAAAAAAAAAAAAAEAAAAABBQA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteResponse.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="issues" />
+      <Property Name="orderIssues" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteError">
+    <Position X="6.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAIAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteError.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteAddress">
+    <Position X="6.25" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAIAAAACAAABAAEAAAGAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\QuoteApi\QuoteAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteRequest">
+    <Position X="0.5" Y="0.75" Width="3.5" />
+    <AssociationLine Name="features" Type="ScalablePress.API.Models.QuoteApi.QuoteCustomFeatures" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="1.75" />
+        <Point X="5.948" Y="1.75" />
+        <Point X="5.948" Y="3.719" />
+        <Point X="7.25" Y="3.719" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="products" Type="ScalablePress.API.Models.QuoteApi.QuoteProduct" FixedFromPoint="true">
+      <Path>
+        <Point X="2.5" Y="2.238" />
+        <Point X="2.5" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.32" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="sides" Type="ScalablePress.API.Models.QuoteApi.QuoteSides" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.688" Y="2.238" />
+        <Point X="3.688" Y="3.196" />
+        <Point X="3.717" Y="3.196" />
+        <Point X="3.717" Y="4" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="data" Type="ScalablePress.API.Models.QuoteApi.QuoteWhiteLabelData" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="2.025" />
+        <Point X="5.526" Y="2.025" />
+        <Point X="5.526" Y="3.683" />
+        <Point X="5.562" Y="3.683" />
+        <Point X="5.562" Y="4.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAEAAAAAAAAAAAIFAAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteRequest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="address" />
+      <Property Name="features" />
+      <Property Name="sides" />
+      <Property Name="data" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteCustomFeatures">
+    <Position X="7.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteCustomFeatures.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteProduct">
+    <Position X="0.75" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.QuoteApi.QuoteWhiteLabelData">
+    <Position X="5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\QuoteApi\QuoteWhiteLabelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.QuoteAPI">
+    <Position X="9.25" Y="0.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIs\QuoteAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
