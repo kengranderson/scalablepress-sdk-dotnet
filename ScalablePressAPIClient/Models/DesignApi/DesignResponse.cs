@@ -44,5 +44,7 @@ namespace ScalablePress.API.Models.DesignApi
         public bool conversion { get; set; }
         
         public bool review { get; set; }
+
+        public override string ToString() => designId ?? base.ToString();
     }
 }

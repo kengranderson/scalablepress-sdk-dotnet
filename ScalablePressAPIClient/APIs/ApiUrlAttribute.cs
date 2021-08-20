@@ -37,5 +37,27 @@ namespace ScalablePress.API
             var method = new HttpMethod(methodName);
             return method;
         }
+
+        /// <summary>
+        /// Builds a url from a pair of mustachioed key/value parameters in a string
+        /// </summary>
+        /// <param name="urlPattern"></param>
+        /// <param name="parameterName"></param>
+        /// <param name="parameterValue"></param>
+        /// <returns></returns>
+        public string GetUrl(string parameterName = null, string parameterValue = null)
+        {
+            var _urlPattern = UrlPattern;
+
+            if (parameterName != null)
+            {
+                _urlPattern = _urlPattern.Replace($"{{{parameterName}}}", parameterValue);
+            }
+
+            return _urlPattern;
+        }
+
+        public override string ToString() =>
+            $"{GetUrl()}";
     }
 }

@@ -8,14 +8,14 @@ namespace ScalablePress.API.Models.DesignApi
         /// <summary>
         /// file or URL	Artwork file or absolute URL for this side of the design. Artwork requirements
         /// </summary>
-        [SerializeAsFile]
+        [SerializeAsFile("^https?://")]
         public string artwork { get; set; }
 
         /// <summary>
         /// file or URL	Optional proof image file or absolute URL showing position of artwork on the product, 
         /// used by our artists to make sure the print dimensions and position are as intended
         /// </summary>
-        [SerializeAsFile]
+        [SerializeAsFile("^https?://")]
         public string proof { get; set; }
 
         /// <summary>

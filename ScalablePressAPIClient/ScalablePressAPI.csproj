@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="System.Text.Json" Version="6.0.0-preview.6.21352.12" />
-    <PackageReference Include="Wakanda.FormSerializer" Version="2021.7.18.1" />
+    <PackageReference Include="Wakanda.FormSerializer" Version="2021.8.19.1" />
   </ItemGroup>
 
 </Project>

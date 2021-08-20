@@ -1,4 +1,4 @@
-﻿#define USE_FIDDLER
+﻿//#define USE_FIDDLER
 
 using Microsoft.Extensions.Logging;
 using ScalablePress.API.Converters;
@@ -161,7 +161,7 @@ namespace ScalablePress.API
                 var apiVersion = attribute.ApiVersion;
 
                 // Build the url.
-                var url = BuildUrl(urlPattern, urlParameterName, urlParameterValue);
+                var url = attribute.GetUrl(urlParameterName, urlParameterValue);
 
                 ApiCallSuccess = false;
 
@@ -190,8 +190,8 @@ namespace ScalablePress.API
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
-                return default;
+                _logger?.LogError(ex, ex.Message);
+                throw;
             }
         }
 
@@ -215,22 +215,6 @@ namespace ScalablePress.API
                     return html;
                 }
             }
-        }
-
-        /// <summary>
-        /// Builds a url from a pair of mustachioed key/value parameters in a string
-        /// </summary>
-        /// <param name="urlPattern"></param>
-        /// <param name="parameterName"></param>
-        /// <param name="parameterValue"></param>
-        /// <returns></returns>
-        string BuildUrl(string urlPattern, string parameterName = null, string parameterValue = null)
-        {
-            if (parameterName != null)
-            {
-                urlPattern = urlPattern.Replace($"{{{parameterName}}}", parameterValue);
-            }
-            return urlPattern;
         }
 
         BadRequest GetBadRequest(string jsonResponse)

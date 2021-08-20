@@ -22,5 +22,7 @@
         /// Design validation object
         /// </summary>
         public DesignValidation validation { get; set; }
+
+        public override string ToString() => name ?? base.ToString();
     }
 }
