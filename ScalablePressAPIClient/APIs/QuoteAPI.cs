@@ -19,7 +19,7 @@ namespace ScalablePress.API
         /// <param name="quote"></param>
         /// <returns>Returns a quote response object.</returns>
         [ApiCall("quote", "Post")]
-        public async Task<QuoteResponse> CreateStandardQuoteAsync(QuoteRequest quote) =>
+        public async Task<QuoteResponse> CreateStandardQuoteAsync(StandardQuoteRequest quote) =>
             await CallJsonAPIAsync<QuoteResponse>(typeof(QuoteAPI), nameof(QuoteAPI.CreateStandardQuoteAsync), postData: quote).ConfigureAwait(false);
 
         /// <summary>

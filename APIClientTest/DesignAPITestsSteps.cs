@@ -107,7 +107,7 @@ namespace APIClientTest
                 country = "US"
             };
 
-            var quote = new QuoteRequest
+            var quote = new StandardQuoteRequest
             { 
                 name = $"Quote generated {DateTime.Now}",
                 type = PrintingTypes.dtg,
