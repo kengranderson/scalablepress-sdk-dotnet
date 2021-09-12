@@ -79,244 +79,244 @@ namespace APIClientTest
         {
 #line 4
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "id",
                         "designId",
                         "title",
                         "price"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-tank",
                         "611f187c903c816db29fb1c2",
                         "Harriet Tubman $20 Bill - Red and White (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "next-level-ladies-racerback-tank",
                         "611f18e9067e22268ff24416",
                         "Harriet Tubman $20 Bill - Purple and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-tank",
                         "611f18e3067e22268ff24415",
                         "Harriet Tubman $20 Bill - Blue and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-ladies-t-shirt",
                         "611f18eff411f86da544c887",
                         "Harriet Tubman $20 Bill - Red and White (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-t-shirt",
                         "611f18bd55d0fd020258813a",
                         "Harriet Tubman $20 Bill - Brown and Gold (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-tank",
                         "611f18ccb23a172fe8f86bab",
                         "Blackfacts Heroes - Blue and White (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "next-level-ladies-racerback-tank",
                         "611f18cf2f2dfc02091fb222",
                         "Blackfacts Heroes - Purple and Gold (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-t-shirt",
                         "611f1880731e042a41bfe5c3",
                         "Harriet Tubman $20 Bill - White and Black (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-tank",
                         "611f191146cbf22c39671391",
                         "Blackfacts Heroes - Pink and Green (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-t-shirt",
                         "611f18fe2f2dfc02091fb225",
                         "Blackfacts Heroes - Blue and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-ladies-t-shirt",
                         "611f18e9067e22268ff24416",
                         "Harriet Tubman $20 Bill - Purple and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "next-level-ladies-racerback-tank",
                         "611f1900903c816db29fb1e6",
                         "Blackfacts Heroes - Blue and White (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "next-level-ladies-racerback-tank",
                         "611f190e067e22268ff2441c",
                         "Blackfacts Heroes - Black and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "next-level-ladies-racerback-tank",
                         "611f18c04bcc0c4fb37b5354",
                         "Harriet Tubman $20 Bill - Black and Gold (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-t-shirt",
                         "611f1903819f294fad237ade",
                         "Blackfacts Heroes - Purple and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-ladies-t-shirt",
                         "611f18b9903c816db29fb1cd",
                         "Harriet Tubman $20 Bill - Purple and Gold (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-t-shirt",
                         "611f18c04bcc0c4fb37b5354",
                         "Harriet Tubman $20 Bill - Black and Gold (on Black)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "next-level-ladies-racerback-tank",
                         "611f1903819f294fad237ade",
                         "Blackfacts Heroes - Purple and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-tank",
                         "611f18f897a3362c2f5f223d",
                         "Harriet Tubman $20 Bill - Black and Gold (on White)",
                         "20.00"});
-            table2.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "gildan-ultra-cotton-tank",
                         "611f18c04bcc0c4fb37b5354",
                         "Harriet Tubman $20 Bill - Black and Gold (on Black)",
                         "20.00"});
 #line 5
- testRunner.Given("the Swag Catalog contains these products", ((string)(null)), table2, "Given ");
+ testRunner.Given("the Swag Catalog contains these products", ((string)(null)), table7, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "id",
                         "designId",
                         "title",
                         "price"});
-            table3.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         "gildan-ultra-cotton-jank",
                         "611f187c903c816db29fb1c2",
                         "Invalid Product Id",
                         "20.00"});
 #line 27
- testRunner.And("invalid products are listed here", ((string)(null)), table3, "And ");
+ testRunner.And("invalid products are listed here", ((string)(null)), table8, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "size"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "sml"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "med"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "lrg"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "xlg"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "xxl"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "xxxl"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "xxxxl"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "xxxxxl"});
-            table4.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "xxxxxxl"});
 #line 30
- testRunner.And("products are available in these sizes", ((string)(null)), table4, "And ");
+ testRunner.And("products are available in these sizes", ((string)(null)), table9, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "size"});
-            table5.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "bad"});
 #line 41
- testRunner.And("invalid product sizes are listed here", ((string)(null)), table5, "And ");
+ testRunner.And("invalid product sizes are listed here", ((string)(null)), table10, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "color"});
-            table6.AddRow(new string[] {
+            table11.AddRow(new string[] {
                         "black"});
-            table6.AddRow(new string[] {
+            table11.AddRow(new string[] {
                         "white"});
 #line 44
- testRunner.And("products are available in these colors", ((string)(null)), table6, "And ");
+ testRunner.And("products are available in these colors", ((string)(null)), table11, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "color"});
-            table7.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "invisible"});
 #line 48
- testRunner.And("invalid product colors are listed here", ((string)(null)), table7, "And ");
+ testRunner.And("invalid product colors are listed here", ((string)(null)), table12, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "name",
                         "address1",
                         "city",
                         "state",
                         "zip",
                         "country"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Richard E Witt",
                         "3325 Half and Half Drive",
                         "Corcoran",
                         "CA",
                         "93212",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Gary R Mendoza",
                         "2840 Harley Vincent Drive",
                         "Mesopotamia",
                         "OH",
                         "44439",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "William M Duvall",
                         "154 Pretty View Lane",
                         "Sebastopol",
                         "CA",
                         "95472",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Justin R Reeser",
                         "4407 Brooke Street",
                         "Houston",
                         "TX",
                         "77002",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Brenda F Hart",
                         "1683 Christie Way",
                         "Lexington",
                         "MA",
                         "02173",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Eric L Mitchell",
                         "2570 Summit Street",
                         "Davenport",
                         "IA",
                         "52806",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Joe T Dawkins",
                         "149 Goldcliff Circle",
                         "Washington",
                         "DC",
                         "20016",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Billie F Buffington",
                         "1885 Virginia Street",
                         "Chicago",
                         "IL",
                         "60653",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Lisa W Boss",
                         "1891 New Street",
                         "Madras",
                         "OR",
                         "97741",
                         "US"});
-            table8.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Howard S Davis",
                         "821 Langtown Road",
                         "Toledo",
@@ -324,16 +324,16 @@ namespace APIClientTest
                         "43609",
                         "US"});
 #line 51
- testRunner.And("our address book contains these addresses", ((string)(null)), table8, "And ");
+ testRunner.And("our address book contains these addresses", ((string)(null)), table13, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "name",
                         "address1",
                         "city",
                         "state",
                         "zip",
                         "country"});
-            table9.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "Blackfacts.com",
                         "60 State St",
                         "Boston",
@@ -341,16 +341,16 @@ namespace APIClientTest
                         "02210",
                         "US"});
 #line 63
- testRunner.And("the custom label from address is", ((string)(null)), table9, "And ");
+ testRunner.And("the custom label from address is", ((string)(null)), table14, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "name",
                         "address1",
                         "city",
                         "state",
                         "zip",
                         "country"});
-            table10.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         "John Doe",
                         "123 Any Street",
                         "Anytown",
@@ -358,7 +358,7 @@ namespace APIClientTest
                         "00000",
                         "US"});
 #line 66
- testRunner.And("the invalid address book contains these addresses", ((string)(null)), table10, "And ");
+ testRunner.And("the invalid address book contains these addresses", ((string)(null)), table15, "And ");
 #line hidden
         }
         

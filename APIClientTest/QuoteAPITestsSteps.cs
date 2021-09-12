@@ -3,7 +3,6 @@ using ScalablePress.API.Models.QuoteApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -228,65 +227,22 @@ namespace APIClientTest
 
         #endregion
 
-        #region Process Response
+        #region Process Quote Response
 
         [Then(@"the result should contain an Order Token")]
         public async Task ThenTheResultShouldContainAnOrderToken()
         {
-            response = await GetResponse().ConfigureAwait(false);
+            response = await GetQuoteResponse(standardQuote, bulkQuote).ConfigureAwait(false);
             Assert.NotNull(response.orderToken);
         }
 
         [Then(@"the result should contain an Error Response")]
         public async Task ThenTheResultShouldContainAnErrorResponse()
         {
-            response = await GetResponse().ConfigureAwait(false);
+            response = await GetQuoteResponse(standardQuote, bulkQuote).ConfigureAwait(false);
             Assert.NotNull(response.issues);
         }
 
-        async Task<QuoteResponse> GetResponse()
-        {
-            QuoteResponse response = null;
-
-            if (standardQuote != null)
-            {
-                response = await apiClient.QuoteAPI.CreateStandardQuoteAsync(standardQuote).ConfigureAwait(false);
-            }
-            else if (bulkQuote != null)
-            {
-                response = await apiClient.QuoteAPI.CreateBulkQuoteAsync(bulkQuote).ConfigureAwait(false);
-            }
-
-            return response;
-        }
-
         #endregion
-
-        class Product
-        {
-            public string id { get; set; }
-            public string designId { get; set; }
-            public string title { get; set; }
-            public float price { get; set; }
-
-            public QuoteProduct ToQuoteProduct(string color, string size, int quantity) =>
-                new QuoteProduct
-                {
-                    id = id,
-                    color = color,
-                    size = Enum.Parse<Sizes>(size),
-                    quantity = quantity
-                };
-        }
-
-        class ProductSizes
-        {
-            public string size { get; set; }
-        }
-
-        class Colors
-        {
-            public string color { get; set; }
-        }
     }
 }

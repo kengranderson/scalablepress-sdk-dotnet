@@ -1,9 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NLog;
 using ScalablePress.API;
+using ScalablePress.API.Models;
 using ScalablePress.API.Models.DesignApi;
+using ScalablePress.API.Models.QuoteApi;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Wakanda.Logging;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
@@ -62,6 +65,49 @@ namespace APIClientTest
             };
 
             return design;
+        }
+
+        protected async Task<QuoteResponse> GetQuoteResponse(StandardQuoteRequest standardQuote, BulkQuoteRequest bulkQuote)
+        {
+            QuoteResponse response = null;
+
+            if (standardQuote != null)
+            {
+                response = await apiClient.QuoteAPI.CreateStandardQuoteAsync(standardQuote).ConfigureAwait(false);
+            }
+            else if (bulkQuote != null)
+            {
+                response = await apiClient.QuoteAPI.CreateBulkQuoteAsync(bulkQuote).ConfigureAwait(false);
+            }
+
+            return response;
+        }
+
+        protected class Product
+        {
+            public string id { get; set; }
+            public string designId { get; set; }
+            public string title { get; set; }
+            public float price { get; set; }
+
+            public QuoteProduct ToQuoteProduct(string color, string size, int quantity) =>
+                new QuoteProduct
+                {
+                    id = id,
+                    color = color,
+                    size = Enum.Parse<Sizes>(size),
+                    quantity = quantity
+                };
+        }
+
+        protected class ProductSizes
+        {
+            public string size { get; set; }
+        }
+
+        protected class Colors
+        {
+            public string color { get; set; }
         }
     }
 }
