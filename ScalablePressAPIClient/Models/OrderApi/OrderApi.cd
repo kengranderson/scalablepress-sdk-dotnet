@@ -3,7 +3,7 @@
   <Class Name="ScalablePress.API.Models.OrderApi.OrderEventMetaData">
     <Position X="3" Y="5.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAACA=</HashCode>
+      <HashCode>AAAAAAAABgAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAACA=</HashCode>
       <FileName>Models\OrderApi\OrderEventMetaData.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -14,8 +14,8 @@
       <FileName>Models\OrderApi\OrderEvent.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="meta" />
       <Property Name="name" />
+      <Property Name="meta" />
     </ShowAsAssociation>
   </Class>
   <Class Name="ScalablePress.API.Models.OrderApi.Order">
@@ -41,6 +41,13 @@
     <ShowAsAssociation>
       <Property Name="status" />
     </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.OrderApi.EventRequest">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\OrderApi\EventRequest.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Enum Name="ScalablePress.API.Models.OrderApi.OrderEventTypes">
     <Position X="6.75" Y="3.5" Width="1.5" />
