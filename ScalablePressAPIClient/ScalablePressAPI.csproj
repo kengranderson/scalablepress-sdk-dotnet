@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
     <PackageReference Include="System.Text.Json" Version="6.0.0" />
     <PackageReference Include="Wakanda.FormSerializer" Version="2021.11.11.1" />
-    <PackageReference Include="Wakanda.Messaging" Version="2021.10.26.1" />
+    <PackageReference Include="Wakanda.Messaging" Version="2021.11.12.1" />
   </ItemGroup>
 
 </Project>
