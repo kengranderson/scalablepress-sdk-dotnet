@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using ScalablePress.API.Converters;
 using ScalablePress.API.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -82,11 +83,14 @@ namespace ScalablePress.API
                     {
                         if (postData.GetType() == typeof(string))
                         {
-                            request.Content = new StringContent(postData.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded");
+                            var formData = postData.ToString();
+                            _logger.LogTrace($"CallJsonAPIAsync: formData= {formData}");
+                            request.Content = new StringContent(formData, Encoding.UTF8, "application/x-www-form-urlencoded");
                         }
                         else
                         {
                             var jsonData = JsonSerializer.Serialize(postData, _options);
+                            _logger.LogTrace($"CallJsonAPIAsync: jsonData= {jsonData}");
                             request.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                         }
                     }
@@ -153,26 +157,34 @@ namespace ScalablePress.API
 
                 // Get the Http method.
                 var httpMethod = attribute.GetHttpMethod(method);
+                _logger.LogTrace($"CallAPIAsync: httpMethod= {httpMethod}");
 
                 // Get the url pattern.
                 var urlPattern = attribute.UrlPattern;
+                _logger.LogTrace($"CallAPIAsync: urlPattern= {urlPattern}");
 
                 // And the API version.
                 var apiVersion = attribute.ApiVersion;
+                _logger.LogTrace($"CallAPIAsync: apiVersion= {apiVersion}");
 
                 // Build the url.
                 var url = attribute.GetUrl(urlParameterName, urlParameterValue);
+                _logger.LogTrace($"CallAPIAsync: url= {url}");
 
                 ApiCallSuccess = false;
 
                 using (var request = new HttpRequestMessage(httpMethod, apiVersion + "/" + url))
                 {
                     request.Headers.Authorization = _authHeader;
+                    _logger.LogTrace($"CallAPIAsync: Authorization= {_authHeader}");
                     contentSetter?.Invoke(request);
 
                     using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
                     {
                         var responseContent = await ReadAsStringAsync(response).ConfigureAwait(false);
+
+                        _logger.LogTrace($"CallAPIAsync: IsSuccessStatusCode= {response.IsSuccessStatusCode}");
+                        _logger.LogTrace($"CallAPIAsync: responseContent= {responseContent}");
 
                         if (response.IsSuccessStatusCode)
                         {
@@ -197,24 +209,37 @@ namespace ScalablePress.API
 
         static Regex rxUTF8 = new Regex("utf8|UTF-8", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-        static async Task<string> ReadAsStringAsync(HttpResponseMessage response)
+        async Task<string> ReadAsStringAsync(HttpResponseMessage response)
         {
             using (var content = response.Content)
             {
-                var contentType = content.Headers.First(h => h.Key.Equals("Content-Type"));
-                var rawEncoding = contentType.Value.First();
+                string responseContent;
 
-                if (rxUTF8.IsMatch(rawEncoding))
+                if (IsUTF8(content))
                 {
                     var bytes = await content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                    return Encoding.UTF8.GetString(bytes);
+                    responseContent = Encoding.UTF8.GetString(bytes);
                 }
                 else
                 {
                     var html = await content.ReadAsStringAsync().ConfigureAwait(false);
-                    return html;
+                    responseContent = html;
                 }
+
+                _logger.LogTrace($"ReadAsStringAsync: responseContent= {responseContent}");
+                return responseContent;
             }
+        }
+
+        static bool IsUTF8(HttpContent content)
+        {
+            if (content.Headers.TryGetValues("Content-Type", out IEnumerable<string> headers))
+            {
+                var isutf8 = headers.Any(h => rxUTF8.IsMatch(h));
+                return isutf8;
+            }
+
+            return false;
         }
 
         BadRequest GetBadRequest(string jsonResponse)
