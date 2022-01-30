@@ -10,18 +10,18 @@ namespace ScalablePress.API.Models
         {
         }
 
-        public SizeItem(Sizes size)
-        {
-            Value = size;
-            Text = size
-                .GetType()
-                .GetMember(size.ToString())
-                .FirstOrDefault()?
-                .GetCustomAttribute<DescriptionAttribute>()?.
-                Description ?? size.ToString();
-        }
+        //public SizeItem(Sizes size)
+        //{
+        //    Value = size;
+        //    Text = size
+        //        .GetType()
+        //        .GetMember(size.ToString())
+        //        .FirstOrDefault()?
+        //        .GetCustomAttribute<DescriptionAttribute>()?.
+        //        Description ?? size.ToString();
+        //}
 
-        public Sizes Value { get; set; }
+        public string Value { get; set; }
         public string Text { get; set; }
     }
 }

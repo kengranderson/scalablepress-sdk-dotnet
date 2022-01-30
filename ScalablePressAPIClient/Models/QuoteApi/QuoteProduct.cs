@@ -15,7 +15,7 @@
         /// <summary>
         /// Size of the product, see the Product API for available sizes
         /// </summary>
-        public Sizes size { get; set; }
+        public string size { get; set; }
 
         /// <summary>
         /// Quantity of this product/color/size to order

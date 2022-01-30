@@ -2,7 +2,7 @@
 
 namespace ScalablePress.API.Models
 {
-    public class ProductAvailability : Dictionary<string, Dictionary<Sizes, int>>
+    public class ProductAvailability : Dictionary<string, Dictionary<string, int>>
     {
     }
 }
