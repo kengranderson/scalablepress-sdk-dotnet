@@ -16,5 +16,8 @@
         /// string User-friendly error message
         /// </summary>
         public string message { get; set; }
+
+        public override string ToString() =>
+            message ?? base.ToString();
     }
 }

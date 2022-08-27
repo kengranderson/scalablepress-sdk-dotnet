@@ -10,6 +10,9 @@
         /// <summary>
         /// Absolute URL for a PDF packing slip
         /// </summary>
-        public string packing { get; set; }	
+        public string packing { get; set; }
+
+        public override string ToString() =>
+            shipping.ToString();
     }
 }

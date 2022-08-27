@@ -15,5 +15,8 @@ namespace ScalablePress.API.Models.QuoteApi
         public IEnumerable<StandardQuoteRequest> items { get; set; }
 
         public BulkQuoteFeatures data { get; set; }
+
+        public override string ToString() =>
+            name ?? base.ToString();
     }
 }

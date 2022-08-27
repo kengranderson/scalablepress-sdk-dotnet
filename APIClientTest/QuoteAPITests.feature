@@ -110,7 +110,7 @@ Scenario: Generate Bulk Quote With Multiple Products To Different Addresses And 
 
 @quoteerror1
 Scenario: Generate Quote Error From Invalid Product
-	Given the first 1 invalid products are selected
+	Given the first 1 invalid products get selected
 	And the quantity ordered is 1 each
 	And the first 1 sizes are selected
 	And the first 1 colors are selected

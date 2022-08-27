@@ -104,6 +104,12 @@ namespace APIClientTest
             selectedProducts = productCatalog.Take(count).ToList();
         }
 
+        [Given(@"the first (.*) invalid products get selected")]
+        public void GivenTheFirstInvalidProductsGetSelected(int count)
+        {
+            selectedProducts = productCatalog.Take(count).ToList();
+        }
+
         [Given(@"the quantity ordered is (.*) each")]
         public void GivenTheQuantityOrderedIsEach(int count)
         {

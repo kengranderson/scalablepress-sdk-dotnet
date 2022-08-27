@@ -4,6 +4,7 @@
     {
         public string type { get; set; }
         public string description { get; set; }
+        public bool required { get; set; }
         public override string ToString() => description;
     }
 }

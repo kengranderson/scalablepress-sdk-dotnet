@@ -19,7 +19,7 @@ namespace APIClientTest
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class DesignAPITestsFeature : object, Xunit.IClassFixture<DesignAPITestsFeature.FixtureData>, System.IDisposable
+    public partial class CrowdfundingOrdersFeature : object, Xunit.IClassFixture<CrowdfundingOrdersFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace APIClientTest
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "DesignAPITests.feature"
+#line 1 "CrowdfundingOrders.feature"
 #line hidden
         
-        public DesignAPITestsFeature(DesignAPITestsFeature.FixtureData fixtureData, APIClientTest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public CrowdfundingOrdersFeature(CrowdfundingOrdersFeature.FixtureData fixtureData, APIClientTest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,7 @@ namespace APIClientTest
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "DesignAPITests", "\tIn order to test the Design API\r\n\twe call these methods", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "CrowdfundingOrders", "Place Crowdfunding Supporter Orders", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,16 +80,16 @@ namespace APIClientTest
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Create Design")]
-        [Xunit.TraitAttribute("FeatureTitle", "DesignAPITests")]
-        [Xunit.TraitAttribute("Description", "Create Design")]
-        [Xunit.TraitAttribute("Category", "create")]
-        public void CreateDesign()
+        [Xunit.SkippableFactAttribute(DisplayName="Generate Quote for Crowdfunding Supporter Orders")]
+        [Xunit.TraitAttribute("FeatureTitle", "CrowdfundingOrders")]
+        [Xunit.TraitAttribute("Description", "Generate Quote for Crowdfunding Supporter Orders")]
+        [Xunit.TraitAttribute("Category", "generatequote")]
+        public void GenerateQuoteForCrowdfundingSupporterOrders()
         {
             string[] tagsOfScenario = new string[] {
-                    "create"};
+                    "generatequote"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Design", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Quote for Crowdfunding Supporter Orders", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,48 +100,33 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "name",
-                            "type",
-                            "sides_front_dimensions_width",
-                            "sides_front_position_horizontal",
-                            "sides_front_position_offset_top",
-                            "sides_front_artwork",
-                            "sides_front_proof"});
-                table1.AddRow(new string[] {
-                            "Black Facts Matter - AKA Founders",
-                            "dtg",
-                            "11",
-                            "C",
-                            "2.5",
-                            "C:\\Users\\Ken\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\blackfacts-minute-video" +
-                                "-cover.png",
-                            "C:\\Users\\Ken\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\black-facts-matter-shir" +
-                                "t-aka-founders-proof.png"});
 #line 7
- testRunner.Given("the table of data", ((string)(null)), table1, "Given ");
+ testRunner.Given("We are in \"test\" Mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 8
+ testRunner.And("the Crowdfunding Supporter Data is Loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 9
+ testRunner.When("We Generate a Bulk Quote", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.When("I call the Design Create API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
- testRunner.Then("the result should be a new Design Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Quote Should be Generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Create Design, Get Quote, Place Order")]
-        [Xunit.TraitAttribute("FeatureTitle", "DesignAPITests")]
-        [Xunit.TraitAttribute("Description", "Create Design, Get Quote, Place Order")]
-        [Xunit.TraitAttribute("Category", "create-to-order")]
-        public void CreateDesignGetQuotePlaceOrder()
+        [Xunit.SkippableFactAttribute(DisplayName="Place Crowdfunding Supporter Orders")]
+        [Xunit.TraitAttribute("FeatureTitle", "CrowdfundingOrders")]
+        [Xunit.TraitAttribute("Description", "Place Crowdfunding Supporter Orders")]
+        [Xunit.TraitAttribute("Category", "placeorder")]
+        public void PlaceCrowdfundingSupporterOrders()
         {
             string[] tagsOfScenario = new string[] {
-                    "create-to-order"};
+                    "placeorder"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Design, Get Quote, Place Order", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place Crowdfunding Supporter Orders", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -151,17 +136,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 14
+ testRunner.Given("We are in \"test\" Mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 15
- testRunner.Given("design is created from a random image in the images folder", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("We Generate a Crowdfunding Supporter Order Quote", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 16
- testRunner.And("a Quote is generated from the Design Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("We Place the Order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 17
- testRunner.When("an Order is placed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 18
- testRunner.Then("we should have an Order Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The Order Should be Placed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -174,12 +159,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                DesignAPITestsFeature.FeatureSetup();
+                CrowdfundingOrdersFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                DesignAPITestsFeature.FeatureTearDown();
+                CrowdfundingOrdersFeature.FeatureTearDown();
             }
         }
     }

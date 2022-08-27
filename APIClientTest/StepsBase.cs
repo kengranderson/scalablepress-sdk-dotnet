@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NLog;
 using ScalablePress.API;
-using ScalablePress.API.Models;
 using ScalablePress.API.Models.DesignApi;
 using ScalablePress.API.Models.QuoteApi;
 using System;
@@ -91,11 +90,11 @@ namespace APIClientTest
             public float price { get; set; }
 
             public QuoteProduct ToQuoteProduct(string color, string size, int quantity) =>
-                new QuoteProduct
+                new()
                 {
                     id = id,
                     color = color,
-                    size = Enum.Parse<Sizes>(size),
+                    size = size,
                     quantity = quantity
                 };
         }

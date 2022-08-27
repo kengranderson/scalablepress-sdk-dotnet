@@ -43,5 +43,8 @@ namespace ScalablePress.API.Models.QuoteApi
         /// Optional whitelabel shipping data.
         /// </summary>
         public QuoteWhiteLabelData data { get; set; }
+
+        public override string ToString() =>
+            name ?? base.ToString();
     }
 }

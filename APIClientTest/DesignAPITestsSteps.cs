@@ -118,7 +118,7 @@ namespace APIClientTest
                     { 
                         id = "gildan-sweatshirt-crew",
                         color = "black",
-                        size = Sizes.lrg,
+                        size = "lrg",
                         quantity = 2
                     }
                 },
