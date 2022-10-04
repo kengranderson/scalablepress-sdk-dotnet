@@ -15,3 +15,11 @@ Scenario: Place Crowdfunding Supporter Orders
 	And We Generate a Crowdfunding Supporter Order Quote 
 	When We Place the Order
 	Then The Order Should be Placed
+
+@placeorderbatch
+Scenario: Place Crowdfunding Supporter Orders in a Batch
+	Given We are in "live" Mode
+	And We Define Batch Orders to Target 10 Dollars
+	And We Generate a Crowdfunding Supporter Batch Order Quote 
+	When We Place the Batch Order
+	Then The Batch of Orders Should be Placed

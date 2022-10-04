@@ -14,6 +14,7 @@ using ScalablePress.API.Models.QuoteApi;
 using ScalablePress.API.Models;
 using Xunit;
 using ScalablePress.API.Models.OrderApi;
+using System.Linq;
 
 namespace APIClientTest
 {
@@ -26,6 +27,11 @@ namespace APIClientTest
         BulkQuoteRequest _bulkQuoteRequest;
         QuoteResponse _response;
         Order _order;
+
+        int _batchSize;
+        List<BulkQuoteRequest> _batchBulkQuoteRequests;
+        List<QuoteResponse> _batchResponses;
+        List<Order> _batchOrders;
 
         [Given(@"We are in ""([^""]*)"" Mode")]
         public void GivenWeAreInMode(string mode)
@@ -91,7 +97,8 @@ namespace APIClientTest
         {
             Assert.NotNull(_order.orderId);
         }
-        IEnumerable<StandardQuoteRequest> CreateQuotes(IEnumerable<CrowdfundingOrders> supporters)
+
+        List<StandardQuoteRequest> CreateQuotes(IEnumerable<CrowdfundingOrders> supporters)
         {
             List<StandardQuoteRequest> quotes = new();
 
@@ -139,6 +146,65 @@ namespace APIClientTest
 
             return quotes;
         }
+
+        [Given(@"We Define Batch Orders to Target (.*) Dollars")]
+        public void GivenWeDefineBatchOrdersToTargetDollars(int batchSize)
+        {
+            _batchSize = batchSize;
+        }
+
+        [Given(@"We Generate a Crowdfunding Supporter Batch Order Quote")]
+        public async Task GivenWeGenerateACrowdfundingSupporterBatchOrderQuote()
+        {
+            await GivenTheCrowdfundingSupporterDataIsLoaded().ConfigureAwait(false);
+
+            _batchBulkQuoteRequests = new List<BulkQuoteRequest>();
+            var quotes = CreateQuotes(_supporterData);
+
+            while (quotes.Count > 0)
+            {
+                var quoteBatch = quotes.Take(_batchSize).ToList();
+                var quoteRequest = new BulkQuoteRequest
+                {
+                    name = $"Quote Batch of {quoteBatch.Count}, {DateTime.Now}",
+                    items = quoteBatch,
+                    data = new BulkQuoteFeatures
+                    {
+                        breakdown = true
+                    }
+                };
+
+                _batchBulkQuoteRequests.Add(quoteRequest);
+                quotes.RemoveRange(0, quoteBatch.Count);
+            }
+
+            _batchResponses = new List<QuoteResponse>();
+
+            foreach (var quoteRequest in _batchBulkQuoteRequests)
+            {
+                var response = await _apiClient.QuoteAPI.CreateBulkQuoteAsync(quoteRequest).ConfigureAwait(false);
+                _batchResponses.Add(response);
+            }
+        }
+
+        [When(@"We Place the Batch Order")]
+        public async Task WhenWePlaceTheBatchOrder()
+        {
+            _batchOrders = new List<Order>();
+
+            foreach (var response in _batchResponses)
+            {
+                var order = await _apiClient.OrderAPI.PlaceOrderAsync(response.orderToken).ConfigureAwait(false);
+                _batchOrders.Add(order);
+            }
+        }
+
+        [Then(@"The Batch of Orders Should be Placed")]
+        public void ThenTheBatchOfOrdersShouldBePlaced()
+        {
+            Assert.All(_batchOrders, o => Assert.NotNull(o.orderId));
+        }
+
 
         class CrowdfundingOrders
         {
