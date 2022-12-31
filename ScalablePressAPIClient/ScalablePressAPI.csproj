@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
-    <AssemblyName>ScalablePress.API</AssemblyName>
-    <RootNamespace>ScalablePress.API</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>ScalablePress.API</AssemblyName>
+		<RootNamespace>ScalablePress.API</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
-    <PackageReference Include="System.Text.Json" Version="7.0.1" />
-    <PackageReference Include="Wakanda.FormSerializer" Version="2022.12.14.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+		<PackageReference Include="System.Text.Json" Version="7.0.1" />
+		<PackageReference Include="Wakanda.FormSerializer" Version="2022.12.31.1" />
+	</ItemGroup>
 
 </Project>
