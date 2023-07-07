@@ -1,5 +1,5 @@
 ﻿Feature: QuoteAPITests
-	Test the ScalablePress Quote API
+	Test the ScalablePress Quote API using data from the FakeNames database.
 
 Background:
 	Given the Swag Catalog contains these products

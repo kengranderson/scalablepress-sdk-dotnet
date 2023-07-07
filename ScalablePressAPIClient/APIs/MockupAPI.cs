@@ -18,7 +18,7 @@ namespace ScalablePress.API
         /// <returns></returns>
         [ApiCall("mockup", "Post", "v3")]
         public async Task<MockupResponse> CreateMockupAsync(Mockup mockup) =>
-            await CallMultipartAPIAsync<MockupResponse>(typeof(MockupAPI), nameof(MockupAPI.CreateMockupAsync), mockup).ConfigureAwait(false);
+            await CallMultipartAPIAsync<MockupResponse>(typeof(MockupAPI), nameof(CreateMockupAsync), mockup).ConfigureAwait(false);
 
     }
 }

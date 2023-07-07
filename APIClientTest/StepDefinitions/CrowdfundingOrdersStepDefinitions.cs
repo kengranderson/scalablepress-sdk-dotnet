@@ -1,12 +1,5 @@
-using Microsoft.Extensions.Configuration;
-using ScalablePress.API;
 using System;
 using TechTalk.SpecFlow;
-using NLog;
-using Wakanda.Logging;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
-using System.Reflection;
-using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Wakanda.DAL;
@@ -18,11 +11,12 @@ using System.Linq;
 
 namespace APIClientTest
 {
+    /// <summary>
+    /// TDD for BlackFacts Crowdfunding Orders.  Demonstrates real-world use of the API.
+    /// </summary>
     [Binding]
-    public class CrowdfundingOrdersStepDefinitions
+    class CrowdfundingOrdersStepDefinitions : StepsBase
     {
-        IConfiguration _config;
-        Client _apiClient;
         IEnumerable<CrowdfundingOrders> _supporterData;
         BulkQuoteRequest _bulkQuoteRequest;
         QuoteResponse _response;
@@ -36,19 +30,7 @@ namespace APIClientTest
         [Given(@"We are in ""([^""]*)"" Mode")]
         public void GivenWeAreInMode(string mode)
         {
-            var settingsFolder = Path.GetDirectoryName(GetType().GetTypeInfo().Assembly.Location);
-            var configKey = $"ScalablePressAPI:{(mode == "test" ? "TestAPIKey" : "APIKey")}";
-
-            ILogger logger = new LoggerAdapter(LogManager.GetCurrentClassLogger());
-
-            _config = new ConfigurationBuilder()
-                .SetBasePath(settingsFolder)
-                .AddJsonFile("appsettings.json", optional: true)
-                .AddUserSecrets("APIClientTestVault")
-                .Build();
-
-            var apiKey = _config[configKey];
-            _apiClient = new Client(apiKey, logger);
+            SetMode(mode);
         }
 
         [Given(@"the Crowdfunding Supporter Data is Loaded")]

@@ -18,7 +18,7 @@ namespace ScalablePress.API
         /// <returns>Returns a design response object.</returns>
         [ApiCall("design", "Post")]
         public async Task<DesignResponse> CreateDesignAsync(DesignRequest design) =>
-            await CallMultipartAPIAsync<DesignResponse>(typeof(DesignAPI), nameof(DesignAPI.CreateDesignAsync), design).ConfigureAwait(false);
+            await CallMultipartAPIAsync<DesignResponse>(typeof(DesignAPI), nameof(CreateDesignAsync), design).ConfigureAwait(false);
 
         /// <summary>
         /// Provide the designId in order to receive the details of a previously submitted design.
@@ -27,16 +27,16 @@ namespace ScalablePress.API
         /// <returns>Returns a design response object.</returns>
         [ApiCall("design/{designId}", "Get")]
         public async Task<DesignResponse> RetrieveDesignAsync(string designId) =>
-            await CallJsonAPIAsync<DesignResponse>(typeof(DesignAPI), nameof(DesignAPI.RetrieveDesignAsync), nameof(designId), designId).ConfigureAwait(false);
+            await CallJsonAPIAsync<DesignResponse>(typeof(DesignAPI), nameof(RetrieveDesignAsync), nameof(designId), designId).ConfigureAwait(false);
 
         /// <summary>
         /// Provide the designId in order to delete a previously submitted design
         /// </summary>
         /// <param name="designId"></param>
-        /// <returns>Returns adesign response object with an extra deletedAt number that records the time at which the design was deleted.</returns>
+        /// <returns>Returns a design response object with an extra deletedAt number that records the time at which the design was deleted.</returns>
         [ApiCall("design/{designId}")]
         public async Task<DeletedDesignResponse> DeleteDesignAsync(string designId) =>
-            await CallJsonAPIAsync<DeletedDesignResponse>(typeof(DesignAPI), nameof(DesignAPI.DeleteDesignAsync), nameof(designId), designId).ConfigureAwait(false);
+            await CallJsonAPIAsync<DeletedDesignResponse>(typeof(DesignAPI), nameof(DeleteDesignAsync), nameof(designId), designId).ConfigureAwait(false);
 
     }
 }

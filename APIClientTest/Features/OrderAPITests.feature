@@ -1,5 +1,5 @@
 ﻿Feature: OrderAPITests
-	Generate Quotes and Place Orders
+	Generate Quotes and Place Orders using info from the FakeNames database
 
 Background:
 	Given the Catalog contains these products

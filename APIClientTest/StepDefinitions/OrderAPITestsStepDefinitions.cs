@@ -12,7 +12,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class OrderAPITestsSteps : StepsBase
+    class OrderAPITestsStepDefinitions : StepsBase
     {
         #region Fields
 
@@ -78,11 +78,6 @@ namespace APIClientTest
             quantityEach = count;
         }
 
-        //[Given(@"the first (.*) custom addresses is selected")]
-        //public void GivenTheFirstCustomAddressesIsSelected(int count)
-        //{
-        //    selectedCompanyAddresses = companyAddresses.Take(count).ToList();
-        //}
         [Given(@"(.*) swag products are selected")]
         public void GivenSwagProductsAreSelected(int count)
         {
@@ -192,7 +187,7 @@ namespace APIClientTest
         [Then(@"when the Order Token is used to place an Order")]
         public async Task ThenWhenTheOrderTokenIsUsedToPlaceAnOrder()
         {
-            order = await apiClient.OrderAPI.PlaceOrderAsync(quoteResponse.orderToken).ConfigureAwait(false);
+            order = await _apiClient.OrderAPI.PlaceOrderAsync(quoteResponse.orderToken).ConfigureAwait(false);
         }
 
         [Then(@"and Order Id should be returned")]

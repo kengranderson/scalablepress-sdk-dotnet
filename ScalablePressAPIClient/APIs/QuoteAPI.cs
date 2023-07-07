@@ -20,7 +20,7 @@ namespace ScalablePress.API
         /// <returns>Returns a quote response object.</returns>
         [ApiCall("quote", "Post")]
         public async Task<QuoteResponse> CreateStandardQuoteAsync(StandardQuoteRequest quote) =>
-            await CallJsonAPIAsync<QuoteResponse>(typeof(QuoteAPI), nameof(QuoteAPI.CreateStandardQuoteAsync), postData: quote).ConfigureAwait(false);
+            await CallJsonAPIAsync<QuoteResponse>(typeof(QuoteAPI), nameof(CreateStandardQuoteAsync), postData: quote).ConfigureAwait(false);
 
         /// <summary>
         /// The bulk quote API allows receiving quotes for printing multiple designs, items, and shipping to multiple addresses. 
@@ -30,7 +30,7 @@ namespace ScalablePress.API
         /// <returns>Returns a quote response object.</returns>
         [ApiCall("quote/bulk", "Post")]
         public async Task<QuoteResponse> CreateBulkQuoteAsync(BulkQuoteRequest quote) =>
-            await CallJsonAPIAsync<QuoteResponse>(typeof(QuoteAPI), nameof(QuoteAPI.CreateBulkQuoteAsync), postData: quote).ConfigureAwait(false);
+            await CallJsonAPIAsync<QuoteResponse>(typeof(QuoteAPI), nameof(CreateBulkQuoteAsync), postData: quote).ConfigureAwait(false);
 
         /// <summary>
         /// After you have made a successful order-ready quote, you will be provided with an orderToken. 
@@ -40,6 +40,6 @@ namespace ScalablePress.API
         /// <returns>Returns an order object.</returns>
         [ApiCall("quote/{orderToken}", "Get")]
         public async Task<Order> RetrieveQuoteAsync(string orderToken) =>
-            await CallJsonAPIAsync<Order>(typeof(QuoteAPI), nameof(QuoteAPI.RetrieveQuoteAsync), nameof(orderToken), orderToken);
+            await CallJsonAPIAsync<Order>(typeof(QuoteAPI), nameof(RetrieveQuoteAsync), nameof(orderToken), orderToken);
     }
 }

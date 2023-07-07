@@ -2,6 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
+		<Authors>Ken Granderson</Authors>
+		<Company>Blackfacts.com LLC</Company>
+		<Copyright>©2023 Blackfacts.com</Copyright>
+		<Description>ScalablePress API - makes it easy to call the ScalablePress REST API from C# code.</Description>
+		<PackageIconUrl>https://blackfacts.com/img/eye-rg.png</PackageIconUrl>
 		<AssemblyName>ScalablePress.API</AssemblyName>
 		<RootNamespace>ScalablePress.API</RootNamespace>
 	</PropertyGroup>
@@ -10,7 +15,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
 		<PackageReference Include="System.Text.Json" Version="7.0.3" />
-		<PackageReference Include="Wakanda.FormSerializer" Version="2023.6.15.1" />
+		<PackageReference Include="Wakanda.FormSerializer" Version="2023.7.7.1" />
 	</ItemGroup>
 
 </Project>

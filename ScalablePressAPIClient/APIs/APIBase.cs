@@ -24,7 +24,7 @@ namespace ScalablePress.API
     {
         const string apiBaseUrl = "https://api.scalablepress.com";
 
-        static readonly JsonSerializerOptions _options = new JsonSerializerOptions
+        static readonly JsonSerializerOptions _options = new()
         {
             Converters =
             {
@@ -36,7 +36,7 @@ namespace ScalablePress.API
 
 #if USE_FIDDLER
 
-        static readonly HttpClientHandler clientHandler = new HttpClientHandler()
+        static readonly HttpClientHandler clientHandler = new()
         {
             Proxy = new WebProxy
             {
@@ -44,14 +44,14 @@ namespace ScalablePress.API
             }
         };
 
-        static readonly HttpClient _httpClient = new HttpClient(clientHandler)
+        static readonly HttpClient _httpClient = new(clientHandler)
         {
             BaseAddress = new Uri(apiBaseUrl)
         };
 
 #else
 
-        static readonly HttpClient _httpClient = new HttpClient()
+        static readonly HttpClient _httpClient = new()
         {
             BaseAddress = new Uri(apiBaseUrl)
         };
@@ -114,6 +114,7 @@ namespace ScalablePress.API
         {
             var content = new MultipartFormDataContent();
 
+            // Serialize the form fields using the Wakanda.FormSerializer library.
             var formFields = HtmlFormSerializer.Serialize(postData);
 
             foreach (var key in formFields.Keys)

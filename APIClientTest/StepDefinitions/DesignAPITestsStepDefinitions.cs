@@ -2,7 +2,6 @@
 using ScalablePress.API.Models.DesignApi;
 using ScalablePress.API.Models.QuoteApi;
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -11,7 +10,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class DesignAPITestsSteps : StepsBase
+    class DesignAPITestsStepDefinitions : StepsBase
     {
 
         #region Create Design Scenario
@@ -44,13 +43,13 @@ namespace APIClientTest
         [When(@"I call the Design Create API")]
         public async Task WhenICallTheDesignCreateAPI()
         {
-            designResponse = await apiClient.DesignAPI.CreateDesignAsync(design).ConfigureAwait(false);
+            designResponse = await _apiClient.DesignAPI.CreateDesignAsync(design).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a new Design Id")]
         public void ThenTheResultShouldBeANewDesignId()
         {
-            Assert.True(apiClient.DesignAPI.ApiCallSuccess);
+            Assert.True(_apiClient.DesignAPI.ApiCallSuccess);
         }
 
         #endregion
@@ -130,14 +129,14 @@ namespace APIClientTest
                 data = new QuoteWhiteLabelData(address)
             };
 
-            var response = await apiClient.QuoteAPI.CreateStandardQuoteAsync(quote).ConfigureAwait(false);
+            var response = await _apiClient.QuoteAPI.CreateStandardQuoteAsync(quote).ConfigureAwait(false);
             createToOrderOrderToken = response.orderToken;
         }
 
         [When(@"an Order is placed")]
         public async Task WhenAnOrderIsPlaced()
         {
-            var response = await apiClient.OrderAPI.PlaceOrderAsync(createToOrderOrderToken).ConfigureAwait(false);
+            var response = await _apiClient.OrderAPI.PlaceOrderAsync(createToOrderOrderToken).ConfigureAwait(false);
             createToOrderQuoteId = response.orderId;
         }
 

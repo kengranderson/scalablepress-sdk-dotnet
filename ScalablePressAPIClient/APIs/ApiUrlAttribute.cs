@@ -10,7 +10,7 @@ namespace ScalablePress.API
     /// </summary>
     public class ApiCallAttribute : Attribute
     {
-        static readonly Regex rxHttpMethods = new Regex("^(GET|POST|PUT|DELETE|PATCH)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        static readonly Regex rxHttpMethods = new("^(GET|POST|PUT|DELETE|PATCH)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         public ApiCallAttribute(string urlPattern)
         {
