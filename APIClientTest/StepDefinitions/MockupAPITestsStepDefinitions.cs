@@ -8,7 +8,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class MockupAPITestsStepDefinitions : StepsBase
+    class MockupAPITestsStepDefinitions : StepDefinitionsBase
     {
         DesignRequest design;
         MockupResponse response;

@@ -10,7 +10,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class DesignAPITestsStepDefinitions : StepsBase
+    class DesignAPITestsStepDefinitions : StepDefinitionsBase
     {
 
         #region Create Design Scenario

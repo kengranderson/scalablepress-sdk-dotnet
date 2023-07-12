@@ -103,21 +103,30 @@ this.ScenarioInitialize(scenarioInfo);
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "name",
                             "type",
-                            "sides_front_dimensions_width",
-                            "sides_front_position_horizontal",
-                            "sides_front_position_offset_top",
-                            "sides_front_artwork",
-                            "sides_front_proof"});
-                table1.AddRow(new string[] {
-                            "Black Facts Matter - AKA Founders",
-                            "dtg",
-                            "11",
-                            "C",
-                            "2.5",
-                            "C:\\Users\\Ken\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\blackfacts-minute-video" +
-                                "-cover.png",
-                            "C:\\Users\\Ken\\Dropbox\\Projects\\BlackFacts\\blackfactsmatter\\black-facts-matter-shir" +
-                                "t-aka-founders-proof.png"});
+                            "front_artwork",
+                            "front_dimensions_height",
+                            "front_dimensions_width",
+                            "front_position_horizontal",
+                            "front_position_offset_bottom",
+                            "front_position_offset_front",
+                            "back_artwork",
+                            "back_dimensions_height",
+                            "back_dimensions_width",
+                            "back_position_horizontal",
+                            "back_position_offset_bottom",
+                            "back_position_offset_top",
+                            "left_artwork",
+                            "left_dimensions_height",
+                            "left_dimensions_width",
+                            "left_position_horizontal",
+                            "left_position_offset_bottom",
+                            "left_position_offset_top",
+                            "right_artwork",
+                            "right_dimensions_height",
+                            "right_dimensions_width",
+                            "right_position_horizontal",
+                            "right_position_offset_bottom",
+                            "right_position_offset_top"});
 #line 7
  testRunner.Given("the table of data", ((string)(null)), table1, "Given ");
 #line hidden

@@ -15,7 +15,7 @@ namespace APIClientTest
     /// TDD for BlackFacts Crowdfunding Orders.  Demonstrates real-world use of the API.
     /// </summary>
     [Binding]
-    class CrowdfundingOrdersStepDefinitions : StepsBase
+    class CrowdfundingOrdersStepDefinitions : StepDefinitionsBase
     {
         IEnumerable<CrowdfundingOrders> _supporterData;
         BulkQuoteRequest _bulkQuoteRequest;
@@ -36,7 +36,7 @@ namespace APIClientTest
         [Given(@"the Crowdfunding Supporter Data is Loaded")]
         public async Task GivenTheCrowdfundingSupporterDataIsLoaded()
         {
-            _supporterData = await CrowdfundingOrders.Load(_config["ConnectionString"]).ConfigureAwait(false);
+            _supporterData = await CrowdfundingOrders.Load(_iconfiguration["ConnectionString"]).ConfigureAwait(false);
         }
 
         [When(@"We Generate a Bulk Quote")]

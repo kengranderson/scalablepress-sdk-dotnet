@@ -12,7 +12,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class OrderAPITestsStepDefinitions : StepsBase
+    class OrderAPITestsStepDefinitions : StepDefinitionsBase
     {
         #region Fields
 

@@ -7,7 +7,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class ProductAPITestsStepDefinitions : StepsBase
+    class ProductAPITestsStepDefinitions : StepDefinitionsBase
     {
         IEnumerable<Category> categories;
         CategoryProducts categoryProducts;

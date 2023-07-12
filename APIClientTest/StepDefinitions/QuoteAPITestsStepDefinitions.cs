@@ -11,7 +11,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class QuoteAPITestsStepDefinitions : StepsBase
+    class QuoteAPITestsStepDefinitions : StepDefinitionsBase
     {
         #region Fields
 
