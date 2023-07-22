@@ -176,6 +176,126 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.SkippableTheoryAttribute(DisplayName="Pull Designs from ScalablePress")]
+        [Xunit.TraitAttribute("FeatureTitle", "DesignAPITests")]
+        [Xunit.TraitAttribute("Description", "Pull Designs from ScalablePress")]
+        [Xunit.TraitAttribute("Category", "pull-designs")]
+        [Xunit.InlineDataAttribute("649e4d95162dcd09050e6142", new string[0])]
+        [Xunit.InlineDataAttribute("649e4c6a8c04d642f9c2a2b1", new string[0])]
+        [Xunit.InlineDataAttribute("649cc0cd15d4964279f2af5e", new string[0])]
+        [Xunit.InlineDataAttribute("649a563f1cae4274a66f267e", new string[0])]
+        [Xunit.InlineDataAttribute("6493b92f5d15831bf83aaf1d", new string[0])]
+        [Xunit.InlineDataAttribute("6493a9e04237095d485e13a2", new string[0])]
+        [Xunit.InlineDataAttribute("6473c45c1c0a1b6f01be7113", new string[0])]
+        [Xunit.InlineDataAttribute("6473c451352230775ac9f7bd", new string[0])]
+        [Xunit.InlineDataAttribute("63fa3a25083a60397d6db29d", new string[0])]
+        [Xunit.InlineDataAttribute("63f03e21f1b7c639979647c0", new string[0])]
+        [Xunit.InlineDataAttribute("63ab961a1039c4465ebc85ea", new string[0])]
+        [Xunit.InlineDataAttribute("63ab92d0b6fa0077469f5b81", new string[0])]
+        [Xunit.InlineDataAttribute("63ab924ef09d447668ee5103", new string[0])]
+        [Xunit.InlineDataAttribute("639bd6b132248e223d7a3eff", new string[0])]
+        [Xunit.InlineDataAttribute("6306ab01403284422b1959ef", new string[0])]
+        [Xunit.InlineDataAttribute("6306a84cfc24776e9f4d9a5b", new string[0])]
+        [Xunit.InlineDataAttribute("6306a186403284422b1957c4", new string[0])]
+        [Xunit.InlineDataAttribute("63068ae3cb5676790b1507d5", new string[0])]
+        [Xunit.InlineDataAttribute("61ff32a210583347a0137d97", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bf5626a773f8fd1a0b0", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bf3452baa69c2b86619", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bf091bc461b46c30a2e", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bef66681b726e38114c", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7beddc391206b64caa52", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7beb452baa69c2b86618", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7be928a70337dcc3e9a3", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7be859107869cf0353b8", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7be68f40f71b392d0602", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7be4626a773f8fd1a0af", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7be228a70337dcc3e9a2", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7be0452baa69c2b86617", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bde626a773f8fd1a0ae", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bdb8f40f71b392d0601", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bd931d76c69ce6c345c", new string[0])]
+        [Xunit.InlineDataAttribute("61ea7bca28a70337dcc3e9a1", new string[0])]
+        [Xunit.InlineDataAttribute("61df2e2325b43e45469baf2b", new string[0])]
+        [Xunit.InlineDataAttribute("613d02838e3c2946aee47484", new string[0])]
+        [Xunit.InlineDataAttribute("61380d7b2c9c320597720d14", new string[0])]
+        [Xunit.InlineDataAttribute("61380be2b5416a46ba5a56eb", new string[0])]
+        [Xunit.InlineDataAttribute("61380b8842eeb546b4918e5b", new string[0])]
+        [Xunit.InlineDataAttribute("61380b1e8e3c2946aee3013a", new string[0])]
+        [Xunit.InlineDataAttribute("6137fa1242eeb546b49189d3", new string[0])]
+        [Xunit.InlineDataAttribute("6123212e4bcc0c4fb37c45b9", new string[0])]
+        [Xunit.InlineDataAttribute("6123212b3282717de7a53347", new string[0])]
+        [Xunit.InlineDataAttribute("61228be41e971c4fa1768198", new string[0])]
+        [Xunit.InlineDataAttribute("611f191146cbf22c39671391", new string[0])]
+        [Xunit.InlineDataAttribute("611f190e067e22268ff2441c", new string[0])]
+        [Xunit.InlineDataAttribute("611f190b819f294fad237ae0", new string[0])]
+        [Xunit.InlineDataAttribute("611f190897a3362c2f5f2243", new string[0])]
+        [Xunit.InlineDataAttribute("611f1906731e042a41bfe5e1", new string[0])]
+        [Xunit.InlineDataAttribute("611f1903819f294fad237ade", new string[0])]
+        [Xunit.InlineDataAttribute("611f1900903c816db29fb1e6", new string[0])]
+        [Xunit.InlineDataAttribute("611f18fe2f2dfc02091fb225", new string[0])]
+        [Xunit.InlineDataAttribute("611f18fb1e971c4fa175baac", new string[0])]
+        [Xunit.InlineDataAttribute("611f18f897a3362c2f5f223d", new string[0])]
+        [Xunit.InlineDataAttribute("611f18f52f2dfc02091fb224", new string[0])]
+        [Xunit.InlineDataAttribute("611f18f31e971c4fa175baab", new string[0])]
+        [Xunit.InlineDataAttribute("611f18eff411f86da544c887", new string[0])]
+        [Xunit.InlineDataAttribute("611f18e9067e22268ff24416", new string[0])]
+        [Xunit.InlineDataAttribute("611f18e63282717de7a4406e", new string[0])]
+        [Xunit.InlineDataAttribute("611f18e3067e22268ff24415", new string[0])]
+        [Xunit.InlineDataAttribute("611f18def411f86da544c886", new string[0])]
+        [Xunit.InlineDataAttribute("611f18db1e971c4fa175baaa", new string[0])]
+        [Xunit.InlineDataAttribute("611f18d52f2dfc02091fb223", new string[0])]
+        [Xunit.InlineDataAttribute("611f18d2819f294fad237adb", new string[0])]
+        [Xunit.InlineDataAttribute("611f18cf2f2dfc02091fb222", new string[0])]
+        [Xunit.InlineDataAttribute("611f18ccb23a172fe8f86bab", new string[0])]
+        [Xunit.InlineDataAttribute("611f18c91e971c4fa175baa9", new string[0])]
+        [Xunit.InlineDataAttribute("611f18c62f27820215ca30f1", new string[0])]
+        [Xunit.InlineDataAttribute("611f18c3b23a172fe8f86baa", new string[0])]
+        [Xunit.InlineDataAttribute("611f18c04bcc0c4fb37b5354", new string[0])]
+        [Xunit.InlineDataAttribute("611f18bd55d0fd020258813a", new string[0])]
+        [Xunit.InlineDataAttribute("611f18b9903c816db29fb1cd", new string[0])]
+        [Xunit.InlineDataAttribute("611f18b62f2dfc02091fb221", new string[0])]
+        [Xunit.InlineDataAttribute("611f18b1731e042a41bfe5c7", new string[0])]
+        [Xunit.InlineDataAttribute("611f1880731e042a41bfe5c3", new string[0])]
+        [Xunit.InlineDataAttribute("611f187c903c816db29fb1c2", new string[0])]
+        [Xunit.InlineDataAttribute("6123414bb23a172fe8f96e01", new string[0])]
+        [Xunit.InlineDataAttribute("612342cd1e971c4fa176ba93", new string[0])]
+        [Xunit.InlineDataAttribute("61df2b3e5cb10b5a3e3f8928", new string[0])]
+        public void PullDesignsFromScalablePress(string designId, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "pull-designs"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("designId", designId);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pull Designs from ScalablePress", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 22
+testRunner.Given(string.Format("a ScalablePress Design with Id \"{0}\"", designId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 23
+testRunner.When("I retrieve the Design corresponding to the Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
+testRunner.Then("a DesignTemplate record will be created if necessary, and the data from ScalableP" +
+                        "ress will be written to the DesignTemplate record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

@@ -6,6 +6,17 @@ namespace ScalablePress.API.Models.DesignApi
     public class DesignSide
     {
         /// <summary>
+        /// Artwork Id returned by API.
+        /// </summary>
+        [SerializeIgnore]
+        public string artworkId { get; set; }
+
+        /// <summary>
+        /// Boolean checking if design should be resized
+        /// </summary>
+        public bool resize { get; set; }
+
+        /// <summary>
         /// file or URL	Artwork file or absolute URL for this side of the design. Artwork requirements
         /// </summary>
         [SerializeAsFile("^https?://")]
@@ -24,14 +35,14 @@ namespace ScalablePress.API.Models.DesignApi
         public float aspect { get; set; }
 
         /// <summary>
-        /// Boolean checking if design should be resized
+        /// Design Approvals.
         /// </summary>
-        public bool resize { get; set; }
+        public DesignApprovals approval { get; set; }
 
         /// <summary>
-        /// Screenprint only, list of each named color or PMS color used in design. Artwork requirements
+        /// Screenprint/DTG only, position object
         /// </summary>
-        public IEnumerable<string> colors { get; set; }
+        public Position position { get; set; }
 
         /// <summary>
         /// Screenprint/DTG/poster only, dimension object
@@ -39,23 +50,8 @@ namespace ScalablePress.API.Models.DesignApi
         public Dimension dimensions { get; set; }
 
         /// <summary>
-        /// Screenprint/DTG only, position object
+        /// Screenprint only, list of each named color or PMS color used in design. Artwork requirements
         /// </summary>
-        public Position position { get; set; }
-
-        #region API response fields
-
-        /// <summary>
-        /// Artwork Id returned by API.
-        /// </summary>
-        [SerializeIgnore]
-        public string artworkId { get; set; }
-
-        /// <summary>
-        /// Design Approvals.
-        /// </summary>
-        public DesignApprovals approval { get; set; }
-
-        #endregion
+        public IEnumerable<string> colors { get; set; }
     }
 }
