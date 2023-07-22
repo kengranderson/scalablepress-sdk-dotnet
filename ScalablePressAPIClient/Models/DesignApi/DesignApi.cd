@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ScalablePress.API.Models.DesignApi.DesignRequest">
+    <Position X="1.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAEAAAAAAAgAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\DesignRequest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="type" />
+      <Property Name="sides" />
+      <Property Name="validation" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.DesignSides">
+    <Position X="5" Y="0.75" Width="2.25" />
+    <AssociationLine Name="front" Type="ScalablePress.API.Models.DesignApi.DesignSide" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.875" Y="1.618" />
+        <Point X="5.875" Y="1.751" />
+        <Point X="8.5" Y="1.751" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="back" Type="ScalablePress.API.Models.DesignApi.DesignSide" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.562" Y="1.618" />
+        <Point X="5.562" Y="2.122" />
+        <Point X="8.5" Y="2.122" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="left" Type="ScalablePress.API.Models.DesignApi.DesignSide" FixedFromPoint="true">
+      <Path>
+        <Point X="7.25" Y="1" />
+        <Point X="8.5" Y="1" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="right" Type="ScalablePress.API.Models.DesignApi.DesignSide" FixedFromPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.375" />
+        <Point X="8.5" Y="1.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\DesignApi\DesignSides.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="front" />
+      <Property Name="back" />
+      <Property Name="left" />
+      <Property Name="right" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.DesignValidation">
+    <Position X="2.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\DesignValidation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.DesignSide">
+    <Position X="8.5" Y="0.75" Width="3" />
+    <AssociationLine Name="approval" Type="ScalablePress.API.Models.DesignApi.DesignApprovals" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="2.495" />
+        <Point X="6.562" Y="2.495" />
+        <Point X="6.562" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="position" Type="ScalablePress.API.Models.DesignApi.Position" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="2.375" />
+        <Point X="13.031" Y="2.375" />
+        <Point X="13.031" Y="4" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQQAAAAAAAgAAIACAAAAAAACAAQAIACAAAAA=</HashCode>
+      <FileName>Models\DesignApi\DesignSide.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="approval" />
+      <Property Name="position" />
+      <Property Name="dimensions" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.DesignApprovals">
+    <Position X="5.25" Y="3.5" Width="2.5" />
+    <AssociationLine Name="order" Type="ScalablePress.API.Models.DesignApi.Approval" FixedFromPoint="true">
+      <Path>
+        <Point X="6.875" Y="4.368" />
+        <Point X="6.875" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="artwork" Type="ScalablePress.API.Models.DesignApi.Approval" FixedFromPoint="true">
+      <Path>
+        <Point X="5.812" Y="4.368" />
+        <Point X="5.812" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\DesignApprovals.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="order" />
+      <Property Name="artwork" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.Approval">
+    <Position X="5.25" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\DesignApi\Approval.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.Dimension">
+    <Position X="8.5" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAQAQAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\Dimension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.Position">
+    <Position X="11.5" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\Position.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="offset" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.PositionOffset">
+    <Position X="11.5" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAABAEAAAAABgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\PositionOffset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScalablePress.API.Models.DesignApi.DesignResponse">
+    <Position X="15.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgABAABIAOGAAAAAAAoAAAFAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\DesignApi\DesignResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ScalablePress.API.Models.DesignApi.DesignTypes">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAGAAAAAAAAAAABQAAAAAAAA=</HashCode>
+      <FileName>Models\DesignApi\DesignTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
