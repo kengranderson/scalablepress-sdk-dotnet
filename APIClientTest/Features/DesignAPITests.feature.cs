@@ -259,7 +259,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Xunit.InlineDataAttribute("611f187c903c816db29fb1c2", new string[0])]
         [Xunit.InlineDataAttribute("6123414bb23a172fe8f96e01", new string[0])]
         [Xunit.InlineDataAttribute("612342cd1e971c4fa176ba93", new string[0])]
-        [Xunit.InlineDataAttribute("61df2b3e5cb10b5a3e3f8928", new string[0])]
         public void PullDesignsFromScalablePress(string designId, string[] exampleTags)
         {
             string[] @__tags = new string[] {
