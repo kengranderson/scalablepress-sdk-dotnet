@@ -1,19 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
-    <AssemblyName>ScalablePress.API</AssemblyName>
-    <RootNamespace>ScalablePress.API</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Authors>Ken Granderson</Authors>
+		<Company>Blackfacts.com LLC</Company>
+		<Copyright>©2023 Blackfacts.com</Copyright>
+		<Description>ScalablePress API - makes it easy to call the ScalablePress REST API from C# code.</Description>
+		<PackageIconUrl>https://blackfacts.com/img/eye-rg.png</PackageIconUrl>
+		<AssemblyName>ScalablePress.API</AssemblyName>
+		<RootNamespace>ScalablePress.API</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
-    <PackageReference Include="System.Text.Json" Version="6.0.0-preview.6.21352.12" />
-    <!--<PackageReference Include="Wakanda.FormSerializer" Version="2021.7.10.1" />-->
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Wakanda.FormSerializer\Wakanda.FormSerializer\Wakanda.FormSerializer.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="System.Text.Json" Version="8.0.0" />
+		<PackageReference Include="Wakanda.FormSerializer" Version="2023.11.19.1" />
+	</ItemGroup>
 
 </Project>

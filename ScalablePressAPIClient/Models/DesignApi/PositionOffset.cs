@@ -23,5 +23,7 @@
             {
                 bottom = bottom
             };
+
+        public override string ToString() => $"top: {top}, bottom: {bottom}";
     }
 }

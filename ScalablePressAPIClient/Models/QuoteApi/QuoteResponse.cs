@@ -53,5 +53,10 @@ namespace ScalablePress.API.Models.QuoteApi
         /// “test” or “live”
         /// </summary>
         public ApiModes mode { get; set; }	
+
+        /// <summary>
+        /// Bulk Quote breakdown
+        /// </summary>
+        public IEnumerable<BulkQuoteBreakdown> breakdown { get; set; }
     }
 }

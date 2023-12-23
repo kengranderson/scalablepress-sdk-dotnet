@@ -2,7 +2,7 @@
 
 namespace ScalablePress.API.Models.QuoteApi
 {
-    public class QuoteRequest
+    public class StandardQuoteRequest
     {
         /// <summary>
         /// Type of product this design is for: screenprint, dtg, case, mug, or poster
@@ -43,5 +43,8 @@ namespace ScalablePress.API.Models.QuoteApi
         /// Optional whitelabel shipping data.
         /// </summary>
         public QuoteWhiteLabelData data { get; set; }
+
+        public override string ToString() =>
+            name ?? base.ToString();
     }
 }

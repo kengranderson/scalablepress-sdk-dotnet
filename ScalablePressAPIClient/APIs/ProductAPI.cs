@@ -18,7 +18,7 @@ namespace ScalablePress.API
         /// <returns>Returns an array with all available category objects.</returns>
         [ApiCall("categories", "Get")]
         public async Task<IEnumerable<Category>> ListProductCategoriesAsync() =>
-            await CallJsonAPIAsync<IEnumerable<Category>>(typeof(ProductAPI), nameof(ProductAPI.ListProductCategoriesAsync));
+            await CallJsonAPIAsync<IEnumerable<Category>>(typeof(ProductAPI), nameof(ProductAPI.ListProductCategoriesAsync)).ConfigureAwait(false);
 
         /// <summary>
         /// Specify a category id to receive category information and a list of products in that category.
@@ -27,7 +27,7 @@ namespace ScalablePress.API
         /// <returns>Returns a category object which now contains an array of product overview objects.</returns>
         [ApiCall("categories/{categoryId}", "Get")]
         public async Task<CategoryProducts> ListProductsAsync(string categoryId) =>
-            await CallJsonAPIAsync<CategoryProducts>(typeof(ProductAPI), nameof(ProductAPI.ListProductsAsync), nameof(categoryId), categoryId);
+            await CallJsonAPIAsync<CategoryProducts>(typeof(ProductAPI), nameof(ProductAPI.ListProductsAsync), nameof(categoryId), categoryId).ConfigureAwait(false);
 
         /// <summary>
         /// Specify a product id to receive product information. This information could include the following:
@@ -44,7 +44,7 @@ namespace ScalablePress.API
         /// <returns>Returns a product object.</returns>
         [ApiCall("products/{productId}", "Get")]
         public async Task<ProductInfo> ListProductInformationAsync(string productId) =>
-            await CallJsonAPIAsync<ProductInfo>(typeof(ProductAPI), nameof(ProductAPI.ListProductInformationAsync), nameof(productId), productId);
+            await CallJsonAPIAsync<ProductInfo>(typeof(ProductAPI), nameof(ProductAPI.ListProductInformationAsync), nameof(productId), productId).ConfigureAwait(false);
 
         /// <summary>
         /// Specify a product id to receive product availability information. 
@@ -54,7 +54,7 @@ namespace ScalablePress.API
         /// <returns>Returns a product availability object.</returns>
         [ApiCall("products/{productId}/availability", "Get")]
         public async Task<ProductAvailability> ListProductAvailabilityAsync(string productId) =>
-            await CallJsonAPIAsync<ProductAvailability>(typeof(ProductAPI), nameof(ProductAPI.ListProductAvailabilityAsync), nameof(productId), productId);
+            await CallJsonAPIAsync<ProductAvailability>(typeof(ProductAPI), nameof(ProductAPI.ListProductAvailabilityAsync), nameof(productId), productId).ConfigureAwait(false);
 
         /// <summary>
         /// Specify a product id to receive product information. For each color of the product, this information includes the following:
@@ -69,6 +69,6 @@ namespace ScalablePress.API
         /// <returns>Returns an item object</returns>
         [ApiCall("products/{productId}/items", "Get")]
         public async Task<ProductDetails> ListDetailedItemInformationAsync(string productId) =>
-            await CallJsonAPIAsync<ProductDetails>(typeof(ProductAPI), nameof(ProductAPI.ListDetailedItemInformationAsync), nameof(productId), productId);
+            await CallJsonAPIAsync<ProductDetails>(typeof(ProductAPI), nameof(ProductAPI.ListDetailedItemInformationAsync), nameof(productId), productId).ConfigureAwait(false);
     }
 }

@@ -6,5 +6,6 @@
         public string itemName { get; set; }
         public string tracking { get; set; }
         public string service { get; set; }
+        public string reason { get; set; }
     }
 }

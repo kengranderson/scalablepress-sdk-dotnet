@@ -1,9 +1,6 @@
 ﻿using ScalablePress.API.Models.DesignApi;
 using ScalablePress.API.Models.MockupApi;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using Xunit;
@@ -11,7 +8,7 @@ using Xunit;
 namespace APIClientTest
 {
     [Binding]
-    class MockupAPITestsSteps : StepsBase
+    class MockupAPITestsStepDefinitions : StepDefinitionsBase
     {
         DesignRequest design;
         MockupResponse response;
@@ -46,7 +43,7 @@ namespace APIClientTest
                     format = MockupOutputFormats.jpg
                 }
             };
-            response = await apiClient.MockupAPI.CreateMockupAsync(mockup).ConfigureAwait(false);
+            response = await _apiClient.MockupAPI.CreateMockupAsync(mockup).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a Url")]

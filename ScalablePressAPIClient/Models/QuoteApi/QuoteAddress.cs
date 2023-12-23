@@ -40,6 +40,9 @@
         /// <summary>
         /// ISO3166 country code, defaults to US
         /// </summary>
-        public string country { get; set; }	
+        public string country { get; set; }
+
+        public override string ToString() =>
+            $"{name} {company} {address1} {address2} {city}, {state} {zip} {country}";
     }
 }

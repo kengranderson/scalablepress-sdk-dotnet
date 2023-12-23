@@ -22,7 +22,7 @@ namespace ScalablePress.API
         /// <returns>Returns an order object.</returns>
         [ApiCall("order", "Post")]
         public async Task<Order> PlaceOrderAsync(string orderToken) =>
-            await CallJsonAPIAsync<Order>(typeof(OrderAPI), nameof(OrderAPI.PlaceOrderAsync), postData: $"orderToken={orderToken}");
+            await CallJsonAPIAsync<Order>(typeof(OrderAPI), nameof(PlaceOrderAsync), postData: $"orderToken={orderToken}").ConfigureAwait(false);
 
         /// <summary>
         /// After placing an order, you can reprint any item in that order using the orderId. 
@@ -34,7 +34,7 @@ namespace ScalablePress.API
         /// <returns>Returns a quote response object</returns>
         [ApiCall("order/{orderId}/reprint", "Post")]
         public async Task<QuoteResponse> ReprintOrderAsync(string orderId, ReprintOrderItem item) =>
-            await CallJsonAPIAsync<QuoteResponse>(typeof(OrderAPI), nameof(OrderAPI.ReprintOrderAsync), nameof(orderId), orderId, item);
+            await CallJsonAPIAsync<QuoteResponse>(typeof(OrderAPI), nameof(ReprintOrderAsync), nameof(orderId), orderId, item).ConfigureAwait(false);
 
         /// <summary>
         /// After placing several orders you can get the status and other information on each of your orders.
@@ -42,7 +42,7 @@ namespace ScalablePress.API
         /// <returns>Returns an array of order objects.</returns>
         [ApiCall("order", "Get")]
         public async Task<IEnumerable<Order>> RetrieveOrdersAsync() =>
-            await CallJsonAPIAsync<IEnumerable<Order>>(typeof(OrderAPI), nameof(OrderAPI.RetrieveOrdersAsync));
+            await CallJsonAPIAsync<IEnumerable<Order>>(typeof(OrderAPI), nameof(RetrieveOrdersAsync)).ConfigureAwait(false);
 
         /// <summary>
         /// Once an order has been placed, you can check on the status and other information of an order 
@@ -52,6 +52,6 @@ namespace ScalablePress.API
         /// <returns>Returns an order object.</returns>
         [ApiCall("order/{orderId}", "Get")]
         public async Task<Order> RetrieveSingleOrderAsync(string orderId) =>
-            await CallJsonAPIAsync<Order>(typeof(OrderAPI), nameof(OrderAPI.RetrieveSingleOrderAsync), nameof(orderId), orderId);
+            await CallJsonAPIAsync<Order>(typeof(OrderAPI), nameof(RetrieveSingleOrderAsync), nameof(orderId), orderId).ConfigureAwait(false);
     }
 }

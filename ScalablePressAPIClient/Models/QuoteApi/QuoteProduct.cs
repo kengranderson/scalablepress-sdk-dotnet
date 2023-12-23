@@ -1,4 +1,6 @@
-﻿namespace ScalablePress.API.Models.QuoteApi
+﻿using System.Collections.Generic;
+
+namespace ScalablePress.API.Models.QuoteApi
 {
     public class QuoteProduct
     {
@@ -15,11 +17,26 @@
         /// <summary>
         /// Size of the product, see the Product API for available sizes
         /// </summary>
-        public Sizes size { get; set; }
+        public string size { get; set; }
 
         /// <summary>
         /// Quantity of this product/color/size to order
         /// </summary>
-        public int quantity { get; set; }	
+        public int quantity { get; set; }
+
+        public static IEnumerable<QuoteProduct> ToArray(string id, string color, string size, int quantity) =>
+            new QuoteProduct[] 
+            { 
+                new QuoteProduct
+                { 
+                    id = id, 
+                    color = color, 
+                    size = size, 
+                    quantity = quantity
+                }
+            };
+
+        public override string ToString() =>
+            $"{quantity} {id} ({color}, {size})";
     }
 }

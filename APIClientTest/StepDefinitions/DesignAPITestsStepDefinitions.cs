@@ -2,55 +2,55 @@
 using ScalablePress.API.Models.DesignApi;
 using ScalablePress.API.Models.QuoteApi;
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using Wakanda.DAL;
 using Xunit;
 
 namespace APIClientTest
 {
     [Binding]
-    class DesignAPITestsSteps : StepsBase
+    class DesignAPITestsStepDefinitions : StepDefinitionsBase
     {
 
         #region Create Design Scenario
 
         DesignRequest design = new DesignRequest();
-        DesignResponse designResponse;
+        DesignResponse _designResponse;
 
         [Given(@"the table of data")]
         public void GivenTheTableOfData(Table table)
         {
-            var row = table.CreateInstance<DesignTableRow>();
+            var row = table.CreateInstance<DesignTemplate>();
 
-            design.name = row.name;
-            design.type = Enum.Parse<DesignTypes>(row.type);
-            design.sides.front = new DesignSide
-            {
-                artwork = row.sides_front_artwork,
-                proof = row.sides_front_proof,
-                aspect = 1,
-                resize = true,
-                dimensions = Dimension.Width(row.sides_front_dimensions_width),
-                position = new Position
-                {
-                    horizontal = row.sides_front_position_horizontal,
-                    offset = PositionOffset.FromTop(row.sides_front_position_offset_top)
-                }
-            };
+            //design.name = row.name;
+            //design.type = Enum.Parse<DesignTypes>(row.type);
+            //design.sides.front = new DesignSide
+            //{
+            //    artwork = row.sides_front_artwork,
+            //    proof = row.sides_front_proof,
+            //    aspect = 1,
+            //    resize = true,
+            //    dimensions = Dimension.Width(row.sides_front_dimensions_width),
+            //    position = new Position
+            //    {
+            //        horizontal = row.sides_front_position_horizontal,
+            //        offset = PositionOffset.FromTop(row.sides_front_position_offset_top)
+            //    }
+            //};
         }
 
         [When(@"I call the Design Create API")]
         public async Task WhenICallTheDesignCreateAPI()
         {
-            designResponse = await apiClient.DesignAPI.CreateDesignAsync(design).ConfigureAwait(false);
+            _designResponse = await _apiClient.DesignAPI.CreateDesignAsync(design).ConfigureAwait(false);
         }
 
         [Then(@"the result should be a new Design Id")]
         public void ThenTheResultShouldBeANewDesignId()
         {
-            Assert.True(apiClient.DesignAPI.ApiCallSuccess);
+            Assert.True(_apiClient.DesignAPI.ApiCallSuccess);
         }
 
         #endregion
@@ -107,7 +107,7 @@ namespace APIClientTest
                 country = "US"
             };
 
-            var quote = new QuoteRequest
+            var quote = new StandardQuoteRequest
             { 
                 name = $"Quote generated {DateTime.Now}",
                 type = PrintingTypes.dtg,
@@ -118,7 +118,7 @@ namespace APIClientTest
                     { 
                         id = "gildan-sweatshirt-crew",
                         color = "black",
-                        size = Sizes.lrg,
+                        size = "lrg",
                         quantity = 2
                     }
                 },
@@ -130,14 +130,14 @@ namespace APIClientTest
                 data = new QuoteWhiteLabelData(address)
             };
 
-            var response = await apiClient.QuoteAPI.CreateStandardQuoteAsync(quote).ConfigureAwait(false);
+            var response = await _apiClient.QuoteAPI.CreateStandardQuoteAsync(quote).ConfigureAwait(false);
             createToOrderOrderToken = response.orderToken;
         }
 
         [When(@"an Order is placed")]
         public async Task WhenAnOrderIsPlaced()
         {
-            var response = await apiClient.OrderAPI.PlaceOrderAsync(createToOrderOrderToken).ConfigureAwait(false);
+            var response = await _apiClient.OrderAPI.PlaceOrderAsync(createToOrderOrderToken).ConfigureAwait(false);
             createToOrderQuoteId = response.orderId;
         }
 
@@ -148,5 +148,34 @@ namespace APIClientTest
         }
 
         #endregion
+
+        #region Pull Designs
+
+        string _designId;
+        DesignTemplate _designTemplate;
+
+        [Given(@"a ScalablePress Design with Id ""(.*)""")]
+        public void GivenAScalablePressDesignWithId(string designId)
+        {
+            _designId = designId;
+        }
+
+        [When(@"I retrieve the Design corresponding to the Id")]
+        public async Task WhenIRetrieveTheDesignCorrespondingToTheId()
+        {
+            // Get the design response from ScalablePress and convert it to a DesignTemplate
+            _designResponse = await _apiClient.DesignAPI.RetrieveDesignAsync(_designId).ConfigureAwait(false);
+            _designTemplate = new DesignTemplate(_designResponse);
+        }
+
+        [Then(@"a DesignTemplate record will be created if necessary, and the data from ScalablePress will be written to the DesignTemplate record")]
+        public async Task ThenADesignTemplateRecordWillBeCreatedIfNecessaryAndTheDataFromScalablePressWillBeWrittenToTheDesignTemplateRecord()
+        {
+            // Save to the database using the Wakanda.DAL 
+            await Database.ExecuteAsync(_iconfiguration["CommerceConnectionString"], "Swag.DesignTemplate_Upsert", _designTemplate).ConfigureAwait(false);
+        }
+
+        #endregion
+
     }
 }
