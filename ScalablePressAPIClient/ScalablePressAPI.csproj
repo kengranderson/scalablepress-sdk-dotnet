@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Authors>Ken Granderson</Authors>
 		<Company>Blackfacts.com LLC</Company>
-		<Copyright>©2025 Blackfacts.com</Copyright>
+		<Copyright>© 2026 Blackfacts.com</Copyright>
 		<Description>ScalablePress API - makes it easy to call the ScalablePress REST API from C# code.</Description>
 		<PackageIconUrl>https://blackfacts.com/img/eye-rg.png</PackageIconUrl>
 		<AssemblyName>ScalablePress.API</AssemblyName>

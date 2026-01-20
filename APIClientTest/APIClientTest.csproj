@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Wakanda.SpecFlow\Wakanda.SpecFlow\Wakanda.SpecFlow.csproj" />
+    
+  <!-- Custom Platform Dependencies: Wakanda.SpecFlow -->
+  <ProjectReference Include="..\..\Wakanda.SpecFlow\Wakanda.SpecFlow\Wakanda.SpecFlow.csproj" />
     <ProjectReference Include="..\ScalablePressAPIClient\ScalablePressAPI.csproj" />
   </ItemGroup>
 
