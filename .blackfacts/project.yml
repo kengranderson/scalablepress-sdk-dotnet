@@ -1,0 +1,37 @@
+# Generated as a proposal by BlackFacts bootstrap. Review and commit intentionally.
+frameworkVersion: "1.0.0-draft.2"
+project:
+  name: "scalablepress-sdk-dotnet"
+  repository: "https://github.com/kengranderson/scalablepress-sdk-dotnet.git"
+  description: "C# SDK for the ScalablePress REST API (print-on-demand)."
+  owner: "Black Facts Educational Foundation"
+components:
+  - name: "scalablepress-sdk-dotnet"
+    path: "."
+    type: "other"
+    languages:
+      - csharp
+    frameworks: []
+    packageManagers: []
+    build:
+      command: "REVIEW-ME"
+    run:
+      command: "REVIEW-ME"
+      url: ""
+    test:
+      commands: []
+    verificationProfiles:
+      - "other"
+standards:
+  exceptions: []
+environment:
+  requiredVariables: []
+  externalDependencies: []
+documentation:
+  architecture: []
+  decisions: []
+  runbooks: []
+quality:
+  accessibility: ""
+  performance: {}
+  supportedPlatforms: []

@@ -1,0 +1,16 @@
+---
+description: BlackFacts project-wide AI development instructions
+alwaysApply: true
+---
+
+# BlackFacts Development Framework
+
+Read and follow `AGENTS.md` as the common project agent entry point.
+
+Before substantial changes, inspect `git status` and read `.blackfacts/project.yml`, `.blackfacts/CURRENT.md`, `.blackfacts/AGENT-CONTRACT.md`, `.blackfacts/SESSION-CONTEXT-MANAGEMENT.md`, `.blackfacts/PRECEDENCE.md`, and the standards applicable to the affected component under `.blackfacts/standards/`.
+
+Inspect before editing. Keep changes bounded to one coherent work unit. Prefer existing project tooling/dependencies. Keep reads/searches and routine command output focused; use bounded secondary-agent/reconnaissance work when it avoids unnecessary context growth.
+
+Select verification based on component type. For web UI work, render and inspect the application and use the declared browser automation strategy; do not assume Playwright for non-web components.
+
+Never claim a build/test/visual result passed unless you actually executed and verified it. Follow `.blackfacts/RISK-AND-APPROVAL.md` for high-risk operations. At handoff/completion, update `.blackfacts/CURRENT.md` with verified current state and the exact next action.
